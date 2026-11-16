@@ -1,0 +1,12 @@
+{
+  "fingerprint": "e8b17765ce42b2fd",
+  "source": "seed_bug_visa",
+  "items": [
+    {
+      "kind": "policy_override",
+      "target": "sponsorship",
+      "value": "Yes",
+      "rationale": "Kane caught visa_wrong_answer; agent applies policy_override while seed stays planted"
+    }
+  ]
+}

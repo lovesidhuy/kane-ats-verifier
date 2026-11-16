@@ -60,6 +60,7 @@ SEED_FIXES: dict[str, dict[str, str]] = {
 FIXPLAN_KINDS = (
     "set_value",
     "policy_override",
+    "heuristic_rule",
     "rematch_label",
     "select_option",
     "upload_file",
@@ -189,10 +190,30 @@ def read_agent_policy() -> dict[str, str]:
     return {str(k): str(v) for k, v in fields.items() if v is not None}
 
 
-def write_agent_policy(fields: dict[str, str], *, source: str = "kane_loop") -> dict[str, Any]:
+def read_full_agent_policy() -> dict[str, Any]:
+    if not AGENT_POLICY_FILE.is_file():
+        return {}
+    try:
+        data = json.loads(AGENT_POLICY_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def write_agent_policy(
+    fields: dict[str, str],
+    *,
+    rules: dict[str, Any] | None = None,
+    source: str = "kane_loop",
+) -> dict[str, Any]:
+    current = read_full_agent_policy()
+    merged_rules = dict(current.get("rules") or {})
+    if rules:
+        merged_rules.update(rules)
     payload = {
         "source": source,
         "updated_utc": datetime.now(timezone.utc).isoformat(),
+        "rules": merged_rules,
         "fields": fields,
     }
     AGENT_POLICY_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -204,10 +225,68 @@ def clear_agent_policy() -> None:
     AGENT_POLICY_FILE.unlink(missing_ok=True)
 
 
-def apply_agent_policy_override(target: str, value: str) -> dict[str, Any]:
+def format_policy_diff(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
+    b_fields = before.get("fields") or {}
+    a_fields = after.get("fields") or {}
+    b_rules = before.get("rules") or {}
+    a_rules = after.get("rules") or {}
+
+    added_fields = {k: v for k, v in a_fields.items() if k not in b_fields or b_fields[k] != v}
+    added_rules = {k: v for k, v in a_rules.items() if k not in b_rules or b_rules[k] != v}
+
+    return {
+        "added_fields": added_fields,
+        "added_rules": added_rules,
+        "before_source": before.get("source"),
+        "after_source": after.get("source"),
+    }
+
+
+def print_policy_diff(diff: dict[str, Any]) -> None:
+    steps = diff.get("steps") or []
+    for step in steps:
+        policy = step.get("policy") or {}
+        rules = policy.get("rules") or {}
+        fields = policy.get("fields") or {}
+        print("\n" + "=" * 66, file=sys.stderr)
+        print("  \033[1;36m[CLOSED LOOP] Agent Heuristic Policy Generalization Diff\033[0m", file=sys.stderr)
+        print("=" * 66, file=sys.stderr)
+        print(f"  \033[1mSource\033[0m: {policy.get('source', 'kane_loop')}", file=sys.stderr)
+        print(f"  \033[1mAction\033[0m: {step.get('action')}", file=sys.stderr)
+        if rules:
+            print("  \033[1;32m+ Generalized Rules Learned:\033[0m", file=sys.stderr)
+            for rk, rv in rules.items():
+                print(f"    \033[32m+ {rk}\033[0m: {json.dumps(rv)}", file=sys.stderr)
+        if fields:
+            print("  \033[1;33m+ Field Overrides Applied:\033[0m", file=sys.stderr)
+            for fk, fv in fields.items():
+                print(f"    \033[33m+ {fk}\033[0m: {json.dumps(fv)}", file=sys.stderr)
+        print("=" * 66 + "\n", file=sys.stderr)
+
+
+def apply_agent_policy_override(
+    target: str,
+    value: str,
+    *,
+    rules: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    before = read_full_agent_policy()
     fields = read_agent_policy()
     fields[target] = value
-    return write_agent_policy(fields, source="kane_loop_agent_fix")
+    inferred_rules: dict[str, Any] = {}
+    if target in {"sponsorship", "visa", "work_auth"}:
+        inferred_rules["screening_policy_resolution"] = "deterministic_policy_first"
+        inferred_rules["work_auth_fallback"] = "require_explicit_persona"
+    elif "fld_" in target or "id_" in target or "mutated" in target or target == "api_resolve_fields":
+        inferred_rules["fallback_strategy"] = "aria_label_or_for_attribute"
+        inferred_rules["regex_id_ignore"] = r"^fld_[0-9a-z]+$"
+        inferred_rules["label_proximity_matching"] = True
+    elif target == "salary_expectation":
+        inferred_rules["salary_resolution"] = "persona_baseline_cad"
+    if rules:
+        inferred_rules.update(rules)
+    after = write_agent_policy(fields, rules=inferred_rules, source="kane_loop_agent_fix")
+    return after
 
 
 def console_diagnosis(events: Iterable[dict[str, Any]]) -> str | None:
@@ -479,6 +558,23 @@ def apply_fixplan(plan: FixPlan, harness_source: str) -> tuple[str, dict[str, An
             else:
                 action = "policy_override_applied"
                 diffs.append({"action": action, "target": item.target, "value": item.value})
+        elif item.kind == "heuristic_rule":
+            rule_dict = {}
+            for part in str(item.value or "").split(","):
+                if "=" in part:
+                    k, v = part.split("=", 1)
+                    rule_dict[k.strip()] = v.strip()
+                elif part.strip():
+                    rule_dict[part.strip()] = True
+            policy = write_agent_policy(read_agent_policy(), rules=rule_dict, source="kane_loop_agent_fix")
+            diffs.append({
+                "action": "heuristic_rule_applied",
+                "target": item.target,
+                "rules": rule_dict,
+                "agent_policy_file": str(AGENT_POLICY_FILE.relative_to(REPO_ROOT)),
+                "policy": policy,
+            })
+            action = "heuristic_rule_applied"
         elif item.kind in FIXPLAN_KINDS:
             action = f"planned_{item.kind}"
             diffs.append(item.to_dict())
@@ -562,6 +658,8 @@ def run_closed_loop(
             )
         seen_fp.add(fp)
         source, diff, action = apply_fixplan(plan, source)
+        if diff and diff.get("steps"):
+            print_policy_diff(diff)
         entry["fixplan"] = plan.to_dict()
         entry["fix"] = action
         entry["diff"] = diff

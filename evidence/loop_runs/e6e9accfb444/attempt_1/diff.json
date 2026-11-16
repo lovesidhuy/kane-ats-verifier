@@ -1,0 +1,22 @@
+{
+  "steps": [
+    {
+      "action": "agent_policy_override_applied",
+      "target": "sponsorship",
+      "value": "Yes",
+      "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+      "kane_failure": "expected_yes_got_no",
+      "policy": {
+        "source": "kane_loop_agent_fix",
+        "updated_utc": "2026-11-16T07:18:49.514060+00:00",
+        "rules": {
+          "screening_policy_resolution": "deterministic_policy_first",
+          "work_auth_fallback": "require_explicit_persona"
+        },
+        "fields": {
+          "sponsorship": "Yes"
+        }
+      }
+    }
+  ]
+}

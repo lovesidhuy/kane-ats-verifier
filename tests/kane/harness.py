@@ -28,6 +28,10 @@ from ats_verifier.discovery import (
     normalize_raw_job,
     deduplicate,
 )
+from ats_verifier.receipt import DryRunReceipt
+
+RECEIPTS_DIR = REPO_ROOT / "evidence" / "receipts"
+RECEIPT_AUDIT_LOG: list[dict] = []
 
 app = Flask(__name__)
 
@@ -504,7 +508,10 @@ ATS_FORM_HTML = """<!DOCTYPE html>
     <div id="network-guard-banner" class="hidden p-3 bg-rose-50 border-t border-rose-200 text-xs font-mono text-rose-900">NETWORK_SUBMIT_GUARD_BLOCKED</div>
     <div id="submit-alert" class="hidden p-4 bg-emerald-50 border-t border-emerald-200 text-xs text-emerald-900 flex items-center justify-between">
       <span id="submit-msg">Dry-Run Guard: Form prepared &amp; verified, external POST aborted.</span>
-      <span class="font-mono font-bold text-emerald-700">SAFETY_GUARD_ACTIVE</span>
+      <div class="flex items-center space-x-2">
+        <span id="receipt-badge" class="hidden font-mono text-xs px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-bold">PREFLIGHT_COMPLIANT</span>
+        <span class="font-mono font-bold text-emerald-700">SAFETY_GUARD_ACTIVE</span>
+      </div>
     </div>
   </div>
 
@@ -561,8 +568,56 @@ ATS_FORM_HTML = """<!DOCTYPE html>
       badge.className = 'px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-mono font-bold';
     }
 
-    function handleDryRunSubmit() {
-      document.getElementById('submit-alert').classList.remove('hidden');
+    async function handleDryRunSubmit() {
+      const form = document.getElementById('ats-form');
+      const isValid = form ? form.checkValidity() : true;
+      const ariaInvalidCount = form ? form.querySelectorAll('[aria-invalid="true"]').length : 0;
+      const payload = {};
+      if (form) {
+        const elements = form.querySelectorAll('input, select, textarea');
+        elements.forEach(el => {
+          const key = el.name || el.id;
+          if (key && el.type !== 'button' && el.type !== 'submit') {
+            payload[key] = el.value;
+          }
+        });
+      }
+      const receiptData = {
+        ats_type: "{{ slug or 'unknown' }}",
+        target_url: window.location.href,
+        intercepted_method: "POST",
+        persona: "{{ persona_id }}",
+        variant: "{{ variant }}",
+        html5_valid: isValid,
+        aria_invalid_count: ariaInvalidCount,
+        payload: payload
+      };
+      window.__LAST_DRY_RUN_RECEIPT__ = receiptData;
+      try {
+        const resp = await fetch('/api/dry-run-receipt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(receiptData)
+        });
+        const resJson = await resp.json();
+        if (resJson && resJson.receipt) {
+          window.__LAST_DRY_RUN_RECEIPT__ = resJson.receipt;
+        }
+      } catch (err) {
+        console.warn('Dry-run receipt endpoint warning:', err);
+      }
+      const alertEl = document.getElementById('submit-alert');
+      const msgEl = document.getElementById('submit-msg');
+      const badgeEl = document.getElementById('receipt-badge');
+      if (msgEl) {
+        msgEl.textContent = 'Dry-Run Receipt Generated: Payload verified (' + Object.keys(payload).length + ' fields, HTML5 valid=' + isValid + '). External POST aborted.';
+      }
+      if (badgeEl) {
+        badgeEl.classList.remove('hidden');
+      }
+      if (alertEl) {
+        alertEl.classList.remove('hidden');
+      }
     }
   </script>
 </body>
@@ -742,6 +797,7 @@ def ats_page(slug):
     return render_template_string(
         ATS_FORM_HTML,
         info=info,
+        slug=slug,
         persona_id=persona_id,
         variant=variant,
         fids=_field_ids_for_variant(variant),
@@ -826,7 +882,7 @@ def network_guard_enabled_for_request() -> bool:
     return os.environ.get("KANE_NETWORK_GUARD", "1").strip().lower() not in {"0", "false", "off"}
 
 
-def _active_agent_policy() -> dict[str, str]:
+def _active_agent_policy() -> dict[str, Any]:
     marker = Path(__file__).with_name(".loop_agent_policy.json")
     if not marker.is_file():
         return {}
@@ -834,10 +890,10 @@ def _active_agent_policy() -> dict[str, str]:
         payload = json.loads(marker.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
         return {}
-    fields = payload.get("fields") if isinstance(payload, dict) else None
-    if not isinstance(fields, dict):
-        return {}
-    return {str(k): str(v) for k, v in fields.items() if v is not None}
+    fields = dict(payload.get("fields") or {}) if isinstance(payload, dict) else {}
+    if isinstance(payload, dict) and "rules" in payload:
+        fields["_rules"] = payload["rules"]
+    return {str(k): str(v) if k != "_rules" else v for k, v in fields.items() if v is not None}
 
 
 @app.route("/api/resolve-fields", methods=["POST"])
@@ -977,6 +1033,37 @@ def api_run_dedupe():
         "unique_count": len(unique),
         "duplicates_removed": len(raw_leads) - len(unique),
         "jobs": out,
+    })
+
+
+@app.route("/api/dry-run-receipt", methods=["POST"])
+def api_dry_run_receipt():
+    data = request.get_json(silent=True) or {}
+    try:
+        receipt = DryRunReceipt(
+            ats_type=str(data.get("ats_type") or "unknown"),
+            target_url=str(data.get("target_url") or request.referrer or ""),
+            intercepted_method=str(data.get("intercepted_method") or "POST"),
+            persona=str(data.get("persona") or "senior_fullstack"),
+            variant=str(data.get("variant") or "standard"),
+            html5_valid=bool(data.get("html5_valid", True)),
+            aria_invalid_count=int(data.get("aria_invalid_count", 0)),
+            payload=dict(data.get("payload") or {}),
+        )
+        saved_path = receipt.save(RECEIPTS_DIR)
+        record = receipt.to_dict()
+        RECEIPT_AUDIT_LOG.append(record)
+        return jsonify({"ok": True, "receipt": record, "saved_to": str(saved_path)})
+    except Exception as exc:
+        return jsonify({"ok": False, "error": str(exc)}), 400
+
+
+@app.route("/api/dry-run-receipts", methods=["GET"])
+def api_get_dry_run_receipts():
+    return jsonify({
+        "count": len(RECEIPT_AUDIT_LOG),
+        "receipts": RECEIPT_AUDIT_LOG,
+        "receipts_dir": str(RECEIPTS_DIR),
     })
 
 

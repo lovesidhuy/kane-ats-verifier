@@ -984,6 +984,69 @@
       "balance_before": 7069.621,
       "balance_after": 7035.2333
     },
+    "e6e9accfb444": {
+      "mode": "replay",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "e6e9accfb444",
+      "seed_bug": "visa_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "passed": true,
+      "stopped": null,
+      "credits": 0.0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "result_status": "failed",
+          "diagnosis": "resolve_fields_http_500",
+          "pack_status": "finalized",
+          "credits": 0.0,
+          "fixplan": {
+            "fingerprint": "e8b17765ce42b2fd",
+            "source": "seed_bug_visa",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "sponsorship",
+                "value": "Yes",
+                "rationale": "Kane caught visa_wrong_answer; agent applies policy_override while seed stays planted"
+              }
+            ]
+          },
+          "fix": "agent_policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "agent_policy_override_applied",
+                "target": "sponsorship",
+                "value": "Yes",
+                "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+                "kane_failure": "expected_yes_got_no",
+                "policy": {
+                  "source": "kane_loop_agent_fix",
+                  "updated_utc": "2026-11-16T07:18:49.514060+00:00",
+                  "rules": {
+                    "screening_policy_resolution": "deterministic_policy_first",
+                    "work_auth_fallback": "require_explicit_persona"
+                  },
+                  "fields": {
+                    "sponsorship": "Yes"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": "finalized",
+          "credits": 0.0
+        }
+      ]
+    },
     "judge_demo": {
       "mode": "replay",
       "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
@@ -1022,7 +1085,12 @@
                 "kane_failure": null,
                 "policy": {
                   "source": "kane_loop_agent_fix",
-                  "updated_utc": "2026-11-16T07:03:33.335816+00:00",
+                  "updated_utc": "2026-11-16T07:23:42.204878+00:00",
+                  "rules": {
+                    "fallback_strategy": "aria_label_or_for_attribute",
+                    "regex_id_ignore": "^fld_[0-9a-z]+$",
+                    "label_proximity_matching": true
+                  },
                   "fields": {
                     "api_resolve_fields": "retry_after_harness_ok"
                   }

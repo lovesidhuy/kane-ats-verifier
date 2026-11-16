@@ -1,0 +1,38 @@
+{
+  "receipt_id": "rcpt_3cf2cdbd256e",
+  "fingerprint": "f7b168cc0ece4ee0",
+  "timestamp_utc": "2026-11-16T07:23:41.749948+00:00",
+  "ats_type": "bamboohr",
+  "target_url": "http://127.0.0.1:8766/ats/bamboohr",
+  "intercepted_method": "POST",
+  "persona": "healthcare_ops",
+  "variant": "strict_policy_screening",
+  "html5_valid": true,
+  "aria_invalid_count": 0,
+  "unmapped_required_count": 0,
+  "field_count": 5,
+  "required_fields_status": {
+    "email": "valid",
+    "first_name": "valid",
+    "last_name": "valid"
+  },
+  "payload": {
+    "email": "sarah.connor@example.com",
+    "first_name": "Sarah",
+    "last_name": "Connor",
+    "phone": "555-0199",
+    "salary_expectation": "120000"
+  },
+  "boundary_audit": {
+    "network_guard_active": true,
+    "external_post_blocked": true,
+    "preflight_passed": true,
+    "audit_verdict": "COMPLIANT_PREFLIGHT_PASS",
+    "rules_applied": [
+      "zero_external_network_leak",
+      "html5_validity_enforced",
+      "zero_aria_invalid_nodes",
+      "complete_required_field_coverage"
+    ]
+  }
+}

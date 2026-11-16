@@ -1,0 +1,37 @@
+{
+  "receipt_id": "rcpt_adc7dfca2bdf",
+  "fingerprint": "40b9d06fadf05250",
+  "timestamp_utc": "2026-11-16T07:13:16.727494+00:00",
+  "ats_type": "greenhouse",
+  "target_url": "http://127.0.0.1:8766/ats/greenhouse",
+  "intercepted_method": "POST",
+  "persona": "senior_fullstack",
+  "variant": "standard",
+  "html5_valid": true,
+  "aria_invalid_count": 0,
+  "unmapped_required_count": 0,
+  "field_count": 4,
+  "required_fields_status": {
+    "email": "valid",
+    "last_name": "valid",
+    "first_name": "valid"
+  },
+  "payload": {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "user@example.com",
+    "phone": "555-0199"
+  },
+  "boundary_audit": {
+    "network_guard_active": true,
+    "external_post_blocked": true,
+    "preflight_passed": true,
+    "audit_verdict": "COMPLIANT_PREFLIGHT_PASS",
+    "rules_applied": [
+      "zero_external_network_leak",
+      "html5_validity_enforced",
+      "zero_aria_invalid_nodes",
+      "complete_required_field_coverage"
+    ]
+  }
+}

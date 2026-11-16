@@ -7,6 +7,7 @@ import csv
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -43,20 +44,21 @@ def _required_snippets(sub: dict) -> list[tuple[str, str]]:
 
 
 def _hackathon_pytest_count() -> int:
-    cmd = [
-        sys.executable,
-        "-m",
-        "pytest",
-        "tests/",
-        "--collect-only",
-        "-q",
+    candidates = [
+        [sys.executable, "-m", "pytest", "tests/", "--collect-only", "-q"],
+        ["/opt/homebrew/bin/pytest", "tests/", "--collect-only", "-q"],
+        ["/opt/homebrew/bin/python3.14", "-m", "pytest", "tests/", "--collect-only", "-q"],
     ]
-    env = {**os.environ, "PYTHONPATH": str(REPO_ROOT)}
-    proc = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True, env=env)
-    if proc.returncode != 0:
-        return 0
-    m = re.search(r"(\d+) tests?", proc.stdout)
-    return int(m.group(1)) if m else 0
+    for cmd in candidates:
+        if not shutil.which(cmd[0]) and not Path(cmd[0]).exists():
+            continue
+        env = {**os.environ, "PYTHONPATH": str(REPO_ROOT)}
+        proc = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True, env=env)
+        if proc.returncode == 0:
+            m = re.search(r"(\d+) tests?", proc.stdout)
+            if m:
+                return int(m.group(1))
+    return 0
 
 
 def _credits_from_ledger() -> tuple[float, float]:

@@ -16,8 +16,8 @@ Standalone clean artifact (initialized Nov 15, 2026)
 2. CANONICAL NUMBERS
 --------------------
   evidence/evidence_index.json + SUBMISSION.json (via check_claims.py):
-    54 suites indexed | 22 loop runs | 45 sealed packs | 190 trajectories (50 sample)
-    29 standalone pytest tests (ats_verifier, closed loop, guard, mutation, dedupe API)
+    54 suites indexed | 23 loop runs | 45 sealed packs | 190 trajectories (50 sample)
+    35 standalone pytest tests (ats_verifier, closed loop, guard, mutation, dedupe API, receipts, HF eval)
   Credits (credits_ledger.csv):
     ledger Σ 1119.31 | balance Δ 1742.05
 

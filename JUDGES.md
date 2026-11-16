@@ -2,24 +2,40 @@
 
 ## Replay (no LambdaTest login, 0 credits)
 
+Run with the unified `./kane-ats` CLI or shell entrypoint:
+
 ```bash
 git clone https://github.com/lovesidhuy/kane-ats-verifier.git
 cd kane-ats-verifier
 python3 -m pip install -r requirements.txt
+
+# 1-command verification replay (< 1.5s):
+./kane-ats demo
+
+# Interactive closed-loop repair replay with live heuristic rule diff:
+./kane-ats heal
+
+# Audit preflight HTML5/ARIA receipts & dataset:
+./kane-ats receipts
+./kane-ats dataset-stats
+```
+
+Or via the shell entrypoint:
+```bash
 ./scripts/run_kane_verify.sh doctor
 ./scripts/run_kane_verify.sh demo
 ```
 
 Artifacts: `evidence/loop_runs/judge_demo/summary.json` (replay red→fix→green on NDJSON fixtures).
 
-**Cold-clone timing:** `demo` ~1.5s wall (29 pytest + replay + claims), `check_claims` ~0.5s.
+**Cold-clone timing:** `demo` ~1.5s wall (35 pytest + replay + claims), `check_claims` ~0.5s.
 
 | Metric | Source |
 |--------|--------|
 | **54** suites indexed | `SUBMISSION.json` |
-| **29** standalone pytest tests | `demo` output |
+| **35** standalone pytest tests | `demo` output |
 | **45** sealed packs | `evidence_index.json` |
-| **22** loop runs recorded | `evidence/loop_runs/` |
+| **23** loop runs recorded | `evidence/loop_runs/` |
 | **190** trajectories (**50** public sample) | `evidence/dataset_manifest.json` |
 | Credits **1119.31** Σ / **1742.05** Δ | `credits_ledger.csv` |
 
