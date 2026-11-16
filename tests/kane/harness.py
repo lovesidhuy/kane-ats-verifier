@@ -661,10 +661,12 @@ DISCOVERY_HTML = """<!DOCTYPE html>
   </div>
   <script>
     async function runDedupe() {
-      const res = await fetch('/api/run-dedupe', {
+      const urlParams = new URLSearchParams(window.location.search);
+      const batch = urlParams.get('batch') || 'standard';
+      const res = await fetch('/api/run-dedupe?batch=' + encodeURIComponent(batch), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: '{}',
+        body: JSON.stringify({ batch: batch }),
       });
       const data = await res.json();
       document.getElementById('raw-count').textContent = data.raw_count;

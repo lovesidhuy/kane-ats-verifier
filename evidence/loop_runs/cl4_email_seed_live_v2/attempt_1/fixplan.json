@@ -1,0 +1,12 @@
+{
+  "fingerprint": "7c2d6daa0585a8ae",
+  "source": "seed_bug_email",
+  "items": [
+    {
+      "kind": "policy_override",
+      "target": "email",
+      "value": "user@example.com",
+      "rationale": "Kane caught email_wrong_answer; agent applies policy_override while seed stays planted"
+    }
+  ]
+}

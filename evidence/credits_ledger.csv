@@ -11,3 +11,7 @@ timestamp_utc,run_id,label,balance_before,balance_after,credits_recorded,note
 2026-11-14T05:06:32.095938+00:00,cl4_email_seed_live,cl1_live_loop,7776.2338,7735.9764,40.2574,needs_human
 2026-11-14T05:10:13.983134+00:00,cl4_email_seed_live,cl1_live_loop,7715.3046,7636.4262,78.8784,
 2026-11-14T05:13:13.425212+00:00,cl4_salary_seed_live,cl1_live_loop,7636.4262,7593.9415,42.4847,
+2026-11-16T05:36:29.270746+00:00,live_cl2_visa_run,cl1_live_loop,7145.4733,7143.5493,1.9240,
+2026-11-16T05:43:27.633041+00:00,cl2_visa_seed_live_v2,cl1_live_loop,7107.8244,7069.6210,38.2034,
+2026-11-16T05:46:57.417037+00:00,cl4_salary_seed_live_v2,cl1_live_loop,7069.6210,7035.2333,34.3877,
+2026-11-16T05:51:07.942022+00:00,cl4_email_seed_live_v2,cl1_live_loop,7035.2333,6944.7931,90.4402,

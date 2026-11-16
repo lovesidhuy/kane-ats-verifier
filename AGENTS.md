@@ -16,4 +16,5 @@ This repository is a clean, standalone **ATS Application Verification & Closed-L
 3. **Closed-Loop Kane CLI Authoring, Triage & Self-Healing (`scripts/kane_loop.py`)**
    - Parses Kane NDJSON (`test_md_done.overall_status`) + packed `failure.yaml` into a structured `FixPlan` (`harness_patch`, `policy_override`, `set_value`, etc.).
    - Writes overrides in canonical `.loop_agent_policy.json` format (`{"source": "...", "fields": {...}}`) while planted seeds stay active, and retries automatically under `--credit-budget`.
-   - Indexed **54** `.testmd` suites, **23** sealed `.evidence` packs (`kane-cli evidence validate` L1 finalized), **18** loop runs, and **162** reward-filtered JSONL trajectories (**50** public sample).
+   - Indexed **54** `.testmd` suites, **25** sealed `.evidence` packs (`kane-cli evidence validate` L1 finalized), **22** loop runs, and **183** reward-filtered JSONL trajectories (**50** public sample).
+   - Executed **4 autonomous exploration campaigns** (`kane-cli explore run`, `exploration_id: 01a1d795-fb13-7aa7-9548-209c0fce60c0`), committing **141 verified lease deltas** across harness routes.

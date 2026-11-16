@@ -145,8 +145,8 @@ def main() -> int:
 
     if manifest.get("public_sample_count") is not None and int(manifest["public_sample_count"]) != 50:
         errors.append(f"sample trajectory count expected 50, got {manifest['public_sample_count']}")
-    if manifest.get("total_verified_trajectories") is not None and int(manifest["total_verified_trajectories"]) != 162:
-        errors.append(f"total trajectory claim expected 162, got {manifest['total_verified_trajectories']}")
+    if manifest.get("total_verified_trajectories") is not None and int(manifest["total_verified_trajectories"]) != 183:
+        errors.append(f"total trajectory claim expected 183, got {manifest['total_verified_trajectories']}")
 
     cl2 = (index.get("loop_runs") or {}).get("cl2_visa_seed_live")
     if cl2 and cl2.get("passed") is not True:

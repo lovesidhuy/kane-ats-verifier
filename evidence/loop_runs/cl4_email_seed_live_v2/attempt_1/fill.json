@@ -1,0 +1,14 @@
+{
+  "http_status": 200,
+  "persona": "visa_sponsorship",
+  "answers": [
+    {
+      "_frame_index": 0,
+      "id": "sponsorship",
+      "radio_options": [],
+      "type": "select",
+      "value": "Yes"
+    }
+  ],
+  "target": "http://127.0.0.1/api/resolve-fields"
+}

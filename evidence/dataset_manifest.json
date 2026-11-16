@@ -1,36 +1,36 @@
 {
   "dataset_name": "jobsfarm-kane-verified-browser-trajectories",
   "version": "1.0.0",
-  "total_verified_trajectories": 162,
+  "total_verified_trajectories": 183,
   "public_sample_count": 50,
-  "gated_full_split_count": 162,
+  "gated_full_split_count": 183,
   "files": {
     "public_sample": "evidence/verified_trajectories_sample_50.jsonl",
     "gated_full": "evidence/verified_trajectories_full_100.jsonl (gitignored)"
   },
   "breakdown_by_source": {
-    "kane_testmd_evidence": 40,
-    "kane_explore_lease": 122
+    "kane_testmd_evidence": 42,
+    "kane_explore_lease": 141
   },
   "breakdown_by_tier": {
-    "tier2_isolated_dry_run_harness": 159,
+    "tier2_isolated_dry_run_harness": 180,
     "tier1_live_public_ats": 3
   },
   "breakdown_by_ats_platform": {
-    "greenhouse": 40,
+    "greenhouse": 45,
     "bamboohr": 4,
-    "linkedin": 21,
+    "linkedin": 23,
     "lever": 7,
     "ashby": 6,
     "indeed": 4,
     "workopolis": 4,
-    "qa_bank": 14,
-    "discovery_pipeline": 6,
+    "qa_bank": 16,
+    "discovery_pipeline": 9,
     "github_smoke": 1,
-    "harness_index": 55
+    "harness_index": 64
   },
   "breakdown_by_dom_variant": {
-    "standard": 139,
+    "standard": 160,
     "strict_policy_screening": 12,
     "mutated_ids": 11
   },

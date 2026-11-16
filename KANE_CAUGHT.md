@@ -19,7 +19,7 @@ Pass/fail is from `test_md_done.overall_status` / pack `result.yaml`, not `evide
 | K-13 | Dirty dedup batch noise | dedup count | optional batch 36→48 | dedupe tool | `48_dirty_dedup_batch_test.md` |
 | K-14 | Explore lease without assertions | 0 pass/fail checks | explore summary | mutation unit tests | `tests/test_mutation_check.py` |
 | K-15 | Agent repeated same fixplan | stopped repeated | loop before agent override | agent policy file | CL-2 honest rerun |
-| **K-16** | **Dedupe POST 415** (`runDedupe` no Content-Type) | `test_md_done` **failed** (live) | `v1_explore_53_live`, `v1_explore_53_live_b` NDJSON | **fixed in `ee43c41`** (JSON POST + `get_json(silent=True)`); live confirmation pending approval | `53_explore_discovery_dedupe_test.md`, `tests/test_discovery_dedupe_api.py` |
+| **K-16** | **Dedupe POST 415** (`runDedupe` no Content-Type) | `test_md_done` **failed** (live) | `v1_explore_53_live`, `v1_explore_53_live_b` NDJSON | **fixed & verified passed live** (`53_explore_discovery_dedupe_passed.evidence`) | `53_explore_discovery_dedupe_test.md`, `tests/test_discovery_dedupe_api.py` |
 
 ## Live re-recordings (Sprint 2)
 
@@ -34,7 +34,12 @@ Pass/fail is from `test_md_done.overall_status` / pack `result.yaml`, not `evide
 | `v1_explore_52_live` | `52_explore_qa_bank_test.md` | **passed** | ~32.8 |
 | `v1_explore_53_live` | `53_explore_discovery_dedupe_test.md` | **failed** (spec tightened) | ~42.1 |
 | `v1_explore_54_live` | `54_explore_lever_smoke_test.md` | **passed** | ~32.8 |
+| `cl2_visa_seed_live_v2` | `17_*` + `visa_wrong_answer` | att1 **failed** / att2 **passed** | ~38.2 |
+| `cl4_salary_seed_live_v2` | `17_*` + `salary_wrong_answer` | att1 **failed** / att2 **passed** | ~34.4 |
+| `cl4_email_seed_live_v2` | `01_*` + `email_wrong_answer` | att1 **failed** / att2 **passed** | ~90.4 |
+| `53_explore_discovery_dedupe` | `53_explore_discovery_dedupe_test.md` | **passed** (K-16 confirmed) | ~14.7 |
+| `48_dirty_dedup_batch` | `48_dirty_dedup_batch_test.md` | **passed** (dirty dedupe) | ~15.0 |
 
-**V-3 mutations (fail → revert → pass):** guard-off **failed** `p0_3_suite36_broken_fail`; guard-on **passed** `p0_3_suite36_pass`; planted seed loops **failed** then agent policy **passed** (`cl2_visa_seed_live`, `cl4_email_seed_live`, `cl4_salary_seed_live`).
+**V-3 mutations (fail → revert → pass):** guard-off **failed** `p0_3_suite36_broken_fail`; guard-on **passed** `p0_3_suite36_pass`; planted seed loops **failed** then agent policy **passed** (`cl2_visa_seed_live`, `cl4_email_seed_live`, `cl4_salary_seed_live`, `cl2_visa_seed_live_v2`, `cl4_salary_seed_live_v2`, `cl4_email_seed_live_v2`).
 
-**Explore note:** Three explore campaigns (`exploration_id` in `AGENTS.md`) committed **122** lease deltas; `50`–`54` regressions are live Kane smokes on harness frontiers discovered during explore.
+**Explore note:** Four explore campaigns (`exploration_id` in `AGENTS.md`) committed **141** lease deltas; `50`–`54` regressions are live Kane smokes on harness frontiers discovered during explore.

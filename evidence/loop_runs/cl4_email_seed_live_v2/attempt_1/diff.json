@@ -1,0 +1,18 @@
+{
+  "steps": [
+    {
+      "action": "agent_policy_override_applied",
+      "target": "email",
+      "value": "user@example.com",
+      "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+      "kane_failure": null,
+      "policy": {
+        "source": "kane_loop_agent_fix",
+        "updated_utc": "2026-11-16T05:49:22.834450+00:00",
+        "fields": {
+          "email": "user@example.com"
+        }
+      }
+    }
+  ]
+}

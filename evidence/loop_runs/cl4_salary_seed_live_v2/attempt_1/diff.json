@@ -1,0 +1,18 @@
+{
+  "steps": [
+    {
+      "action": "agent_policy_override_applied",
+      "target": "salary_expectation",
+      "value": "160000",
+      "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+      "kane_failure": null,
+      "policy": {
+        "source": "kane_loop_agent_fix",
+        "updated_utc": "2026-11-16T05:45:34.440179+00:00",
+        "fields": {
+          "salary_expectation": "160000"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "mode": "live",
+  "suite": "tests/kane/01_greenhouse_autofill_test.md",
+  "run_id": "cl4_email_seed_live_v2",
+  "seed_bug": "email_wrong_answer",
+  "seed_bug_label": "deliberately_planted",
+  "command": [
+    "kane-cli",
+    "testmd",
+    "run",
+    "tests/kane/01_greenhouse_autofill_test.md",
+    "--agent",
+    "--headless",
+    "--timeout",
+    "180"
+  ],
+  "passed": true,
+  "stopped": null,
+  "credits": 90.4402,
+  "attempts": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "overall_status": "failed",
+      "seed_bug_active": "email_wrong_answer",
+      "agent_policy": {},
+      "result_status": "failed",
+      "diagnosis": "visa_wrong_answer",
+      "pack_status": null,
+      "credits": 0.0,
+      "agent_fill": {
+        "http_status": 200,
+        "sponsorship": "Yes"
+      },
+      "fixplan": {
+        "fingerprint": "7c2d6daa0585a8ae",
+        "source": "seed_bug_email",
+        "items": [
+          {
+            "kind": "policy_override",
+            "target": "email",
+            "value": "user@example.com",
+            "rationale": "Kane caught email_wrong_answer; agent applies policy_override while seed stays planted"
+          }
+        ]
+      },
+      "fix": "agent_policy_override_applied",
+      "diff": {
+        "steps": [
+          {
+            "action": "agent_policy_override_applied",
+            "target": "email",
+            "value": "user@example.com",
+            "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+            "kane_failure": null,
+            "policy": {
+              "source": "kane_loop_agent_fix",
+              "updated_utc": "2026-11-16T05:49:22.834450+00:00",
+              "fields": {
+                "email": "user@example.com"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "attempt": 2,
+      "passed": true,
+      "overall_status": "passed",
+      "seed_bug_active": "email_wrong_answer",
+      "agent_policy": {
+        "email": "user@example.com"
+      },
+      "result_status": "passed",
+      "diagnosis": "visa_wrong_answer",
+      "pack_status": null,
+      "credits": 0.0
+    }
+  ],
+  "balance_before": 7035.2333,
+  "balance_after": 6944.7931
+}

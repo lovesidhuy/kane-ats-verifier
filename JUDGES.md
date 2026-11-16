@@ -18,10 +18,10 @@ Artifacts: `evidence/loop_runs/judge_demo/summary.json` (replay red→fix→gree
 |--------|--------|
 | **54** suites indexed | `SUBMISSION.json` |
 | **29** standalone pytest tests | `demo` output |
-| **23** sealed packs | `evidence_index.json` |
-| **18** loop runs recorded | `evidence/loop_runs/` |
-| **162** trajectories (**50** public sample) | `evidence/dataset_manifest.json` |
-| Credits **376.54** Σ / **515.09** Δ | `credits_ledger.csv` |
+| **25** sealed packs | `evidence_index.json` |
+| **22** loop runs recorded | `evidence/loop_runs/` |
+| **183** trajectories (**50** public sample) | `evidence/dataset_manifest.json` |
+| Credits **541.5** Σ / **1164.24** Δ | `credits_ledger.csv` |
 
 ## Live closed loop (optional)
 

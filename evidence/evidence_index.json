@@ -6,7 +6,7 @@
       "url": "http://127.0.0.1:8766/ats/greenhouse",
       "pack_in_repo": "testrun_01_10.evidence",
       "status": "passed",
-      "source": "loop_runs/cl4_email_seed_live"
+      "source": "loop_runs/cl4_email_seed_live_v2"
     },
     {
       "suite": "tests/kane/02_lever_autofill_test.md",
@@ -339,10 +339,10 @@
     },
     {
       "suite": "tests/kane/48_dirty_dedup_batch_test.md",
-      "url": "http://127.0.0.1:8766/tools/discovery-dedupe",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "url": "http://127.0.0.1:8766/tools/discovery-dedupe?batch=dirty",
+      "pack_in_repo": "48_dirty_dedup_batch_passed.evidence",
+      "status": "failed",
+      "source": "48_dirty_dedup_batch_passed.evidence"
     },
     {
       "suite": "tests/kane/50_explore_harness_home_test.md",
@@ -368,7 +368,7 @@
     {
       "suite": "tests/kane/53_explore_discovery_dedupe_test.md",
       "url": "http://127.0.0.1:8766/tools/discovery-dedupe",
-      "pack_in_repo": null,
+      "pack_in_repo": "53_explore_discovery_dedupe_passed.evidence",
       "status": "failed",
       "source": "loop_runs/v1_explore_53_live_b"
     },
@@ -557,6 +557,89 @@
       "balance_before": 8015.8028,
       "balance_after": 7979.9601
     },
+    "cl2_visa_seed_live_v2": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "cl2_visa_seed_live_v2",
+      "seed_bug": "visa_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 38.20340000000033,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "seed_bug_active": "visa_wrong_answer",
+          "agent_policy": {},
+          "result_status": "failed",
+          "diagnosis": "visa_wrong_answer",
+          "pack_status": null,
+          "credits": 0.0,
+          "agent_fill": {
+            "http_status": 200,
+            "sponsorship": "Yes"
+          },
+          "fixplan": {
+            "fingerprint": "f94c0c532e9fd705",
+            "source": "seed_bug_visa",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "sponsorship",
+                "value": "Yes",
+                "rationale": "Kane reported sponsorship mismatch; agent policy_override while seed stays planted"
+              }
+            ]
+          },
+          "fix": "agent_policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "agent_policy_override_applied",
+                "target": "sponsorship",
+                "value": "Yes",
+                "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+                "kane_failure": "expected_yes_got_no",
+                "policy": {
+                  "source": "kane_loop_agent_fix",
+                  "updated_utc": "2026-11-16T05:42:11.975496+00:00",
+                  "fields": {
+                    "sponsorship": "Yes"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "overall_status": "passed",
+          "seed_bug_active": "visa_wrong_answer",
+          "agent_policy": {
+            "sponsorship": "Yes"
+          },
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 7107.8244,
+      "balance_after": 7069.621
+    },
     "cl4_email_seed_live": {
       "mode": "live",
       "suite": "tests/kane/01_greenhouse_autofill_test.md",
@@ -645,6 +728,89 @@
       ],
       "balance_before": 7715.3046,
       "balance_after": 7636.4262
+    },
+    "cl4_email_seed_live_v2": {
+      "mode": "live",
+      "suite": "tests/kane/01_greenhouse_autofill_test.md",
+      "run_id": "cl4_email_seed_live_v2",
+      "seed_bug": "email_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/01_greenhouse_autofill_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 90.4402,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "seed_bug_active": "email_wrong_answer",
+          "agent_policy": {},
+          "result_status": "failed",
+          "diagnosis": "visa_wrong_answer",
+          "pack_status": null,
+          "credits": 0.0,
+          "agent_fill": {
+            "http_status": 200,
+            "sponsorship": "Yes"
+          },
+          "fixplan": {
+            "fingerprint": "7c2d6daa0585a8ae",
+            "source": "seed_bug_email",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "email",
+                "value": "user@example.com",
+                "rationale": "Kane caught email_wrong_answer; agent applies policy_override while seed stays planted"
+              }
+            ]
+          },
+          "fix": "agent_policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "agent_policy_override_applied",
+                "target": "email",
+                "value": "user@example.com",
+                "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+                "kane_failure": null,
+                "policy": {
+                  "source": "kane_loop_agent_fix",
+                  "updated_utc": "2026-11-16T05:49:22.834450+00:00",
+                  "fields": {
+                    "email": "user@example.com"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "overall_status": "passed",
+          "seed_bug_active": "email_wrong_answer",
+          "agent_policy": {
+            "email": "user@example.com"
+          },
+          "result_status": "passed",
+          "diagnosis": "visa_wrong_answer",
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 7035.2333,
+      "balance_after": 6944.7931
     },
     "cl4_salary_seed_live": {
       "mode": "live",
@@ -735,6 +901,89 @@
       "balance_before": 7636.4262,
       "balance_after": 7593.9415
     },
+    "cl4_salary_seed_live_v2": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "cl4_salary_seed_live_v2",
+      "seed_bug": "salary_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 34.38770000000022,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "seed_bug_active": "salary_wrong_answer",
+          "agent_policy": {},
+          "result_status": "failed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0,
+          "agent_fill": {
+            "http_status": 200,
+            "sponsorship": "Yes"
+          },
+          "fixplan": {
+            "fingerprint": "867d3a927ba3f62e",
+            "source": "seed_bug_salary",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "salary_expectation",
+                "value": "160000",
+                "rationale": "Kane caught salary_wrong_answer; agent applies policy_override while seed stays planted"
+              }
+            ]
+          },
+          "fix": "agent_policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "agent_policy_override_applied",
+                "target": "salary_expectation",
+                "value": "160000",
+                "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+                "kane_failure": null,
+                "policy": {
+                  "source": "kane_loop_agent_fix",
+                  "updated_utc": "2026-11-16T05:45:34.440179+00:00",
+                  "fields": {
+                    "salary_expectation": "160000"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "overall_status": "passed",
+          "seed_bug_active": "salary_wrong_answer",
+          "agent_policy": {
+            "salary_expectation": "160000"
+          },
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 7069.621,
+      "balance_after": 7035.2333
+    },
     "judge_demo": {
       "mode": "replay",
       "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
@@ -773,7 +1022,7 @@
                 "kane_failure": null,
                 "policy": {
                   "source": "kane_loop_agent_fix",
-                  "updated_utc": "2026-11-16T05:06:14.244044+00:00",
+                  "updated_utc": "2026-11-16T06:02:43.283289+00:00",
                   "fields": {
                     "api_resolve_fields": "retry_after_harness_ok"
                   }
@@ -871,6 +1120,41 @@
       ],
       "balance_before": 8109.0288,
       "balance_after": 8109.0288
+    },
+    "live_cl2_visa_run": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "live_cl2_visa_run",
+      "seed_bug": "visa_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 1.9239999999999782,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "overall_status": "passed",
+          "seed_bug_active": "visa_wrong_answer",
+          "agent_policy": {},
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 7145.4733,
+      "balance_after": 7143.5493
     },
     "live_mac_suite17": {
       "mode": "live",
@@ -1004,5 +1288,5 @@
       "credits": 32.7538
     }
   },
-  "sealed_packs_committed": 23
+  "sealed_packs_committed": 25
 }
