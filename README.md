@@ -27,7 +27,7 @@ This repository is a clean, standalone verification artifact initialized during 
 ## 0-credit demo (< 5 minutes)
 
 ```bash
-git clone <this-repo>
+git clone https://github.com/lovesidhuy/kane-ats-verifier.git
 cd kane-ats-verifier
 python3 -m pip install -r requirements.txt
 ./scripts/run_kane_verify.sh doctor

@@ -16,4 +16,4 @@ We built a standalone verification harness and closed-loop repair engine (`kane_
 
 Recorded live loop credits: **376.54** in `evidence/credits_ledger.csv` (**515.09** balance delta across runs).
 
-Repo: `<your-public-github-url>` · Judge quickstart: `README.md` → `JUDGES.md`
+Repo: https://github.com/lovesidhuy/kane-ats-verifier · Judge quickstart: `README.md` → `JUDGES.md`

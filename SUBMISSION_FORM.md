@@ -20,7 +20,7 @@ Deadline: **Thu Nov 19, 2026 · 11:59 PM IST (10:29 AM PT)**
    `<your TestMu AI account email>`
 
 5. **What is your GitHub repository link?**  
-   `<push this kane-ats-verifier folder to a new public GitHub repo created on or after Nov 12, 2026, e.g. https://github.com/lovesidhuy/kane-ats-verifier>`
+   `https://github.com/lovesidhuy/kane-ats-verifier`
 
 6. **What is your demo video link (YouTube unlisted or Drive)?**  
    `<paste 3-5 min YouTube unlisted link recorded with DEMO_SCRIPT.md>`
@@ -30,7 +30,7 @@ Deadline: **Thu Nov 19, 2026 · 11:59 PM IST (10:29 AM PT)**
 
 8. **Live URL or install command:**  
    ```bash
-   git clone <your-public-github-url> && cd kane-ats-verifier && pip install -r requirements.txt && ./scripts/run_kane_verify.sh demo
+   git clone https://github.com/lovesidhuy/kane-ats-verifier.git && cd kane-ats-verifier && pip install -r requirements.txt && ./scripts/run_kane_verify.sh demo
    ```
 
 9. **Which lane does your project fit?**  
@@ -43,4 +43,4 @@ Deadline: **Thu Nov 19, 2026 · 11:59 PM IST (10:29 AM PT)**
 
 ## Required Launch Buzz (At Least 2 Public Posts)
 
-Ready-to-post copy is in `SOCIAL_POSTS.md` (X/Twitter + LinkedIn). Update `<your-public-github-url>` and YouTube link before posting.
+Ready-to-post copy is in `SOCIAL_POSTS.md` (X/Twitter + LinkedIn). Add your demo video link before posting.
