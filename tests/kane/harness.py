@@ -4,10 +4,13 @@ Standalone Kane CLI Test Harness using the fresh ats_verifier package.
 Zero dependency on pre-hackathon codebases.
 """
 
+from __future__ import annotations
+
 import json
 import os
 import sys
 from pathlib import Path
+from typing import Any
 from flask import Flask, jsonify, request, render_template_string
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
