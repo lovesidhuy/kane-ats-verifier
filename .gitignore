@@ -25,6 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Kane closed-loop local state (planted bugs)
+.loop_agent_policy.json
 tests/kane/.loop_seed_bug
 tests/kane/.loop_agent_policy.json
 

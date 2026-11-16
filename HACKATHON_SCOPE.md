@@ -9,7 +9,7 @@ This repo is a standalone **closed-loop browser verification artifact** built fo
 - `scripts/kane_loop.py` — closed loop + `.loop_agent_policy.json` overrides + replay
 - `scripts/run_kane_verify.sh` — `demo`, `doctor`, `loop`
 - `evidence/` — 23 sealed `.evidence` packs, 18 loop runs, 50-row trajectory sample, CL-2 showcase
-- Hackathon docs: `README_KANE_HACKATHON.md`, `KANE_CAUGHT.md`, `JUDGES.md`, `DATASET_CARD.md`, `SUBMISSION_FORM.md`
+- Hackathon docs: `README_KANE_HACKATHON.md`, `KANE_CAUGHT.md`, `JUDGES.md`, `DATASET_CARD.md`, `docs/SUBMISSION_FORM.md`
 
 ## Explicitly excluded
 

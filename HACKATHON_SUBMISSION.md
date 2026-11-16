@@ -39,4 +39,4 @@
 
 - `scripts/kane_loop.py` — `FixPlan`, replay, credits ledger, and `.loop_agent_policy.json` overrides.
 - `KANE_CAUGHT.md` — regression map across K-01 through K-16.
-- `SUBMISSION_FORM.md` + `README.md` + `JUDGES.md` — zero-credit cold-clone verification path.
+- `docs/SUBMISSION_FORM.md` + `README.md` + `JUDGES.md` — zero-credit cold-clone verification path.

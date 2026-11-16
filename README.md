@@ -8,7 +8,7 @@
 
 | Doc | Purpose |
 |-----|---------|
-| [SUBMISSION_FORM.md](SUBMISSION_FORM.md) | Ready-to-submit hackathon form answers, one-paragraph pitch, and publish steps |
+| [SUBMISSION_FORM.md](docs/SUBMISSION_FORM.md) | Ready-to-submit hackathon form answers, one-paragraph pitch, and publish steps |
 | [README_KANE_HACKATHON.md](README_KANE_HACKATHON.md) | One-liner, architecture, and claims-to-evidence table |
 | [JUDGES.md](JUDGES.md) | **0-credit** cold-clone replay path (`doctor` + `demo`) |
 | [HACKATHON_SUBMISSION.md](HACKATHON_SUBMISSION.md) | Rubric breakdown (Ships / Verified / Closed Loop / Craft) |

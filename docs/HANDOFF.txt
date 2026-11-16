@@ -30,7 +30,7 @@ Standalone clean artifact (initialized Nov 15, 2026)
   tests/kane/harness.py            local verification server (:8766)
   evidence/loop_runs/              recorded Kane runs
   KANE_CAUGHT.md                   what Kane caught (K-01..K-16)
-  SUBMISSION_FORM.md               copy-paste submission survey answers
+  docs/SUBMISSION_FORM.md          copy-paste submission survey answers
 
 4. SCOPE
 --------
@@ -39,5 +39,5 @@ Standalone clean artifact (initialized Nov 15, 2026)
 
 5. PUBLISHING
 -------------
-  See PUBLISH_CHECKLIST.md and SUBMISSION_FORM.md.
+  See docs/PUBLISH_CHECKLIST.md and docs/SUBMISSION_FORM.md.
 ================================================================================

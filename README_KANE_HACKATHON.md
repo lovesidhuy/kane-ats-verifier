@@ -42,12 +42,12 @@ Canonical headline numbers: **`python3 scripts/check_claims.py`** → `SUBMISSIO
 |-------|--------|
 | **54** suites indexed | `evidence/evidence_index.json` |
 | **29** pytest tests | `./scripts/run_kane_verify.sh demo` |
-| **37** sealed packs | `evidence/*.evidence` |
+| **45** sealed packs | `evidence/*.evidence` |
 | **190** trajectories (**50** sample) | `evidence/dataset_manifest.json` |
-| **22** loop runs | `evidence/loop_runs/` |
+| **23** loop runs | `evidence/loop_runs/` |
 | Credits **1119.31** ledger Σ · **1742.05** balance Δ | `evidence/credits_ledger.csv` |
 | Closed loop red→fix→green | `evidence/loop_runs/cl2_visa_seed_live/` |
 | Kane caught real bugs | `KANE_CAUGHT.md` (K-16 dedupe 415 fixed; CL-2 visa seed) |
 | Network no-submit guard | `tests/kane/36_network_no_submit_guard_test.md` |
 
-See `JUDGES.md` for credentials, replay fallback, and FAQ, and `SUBMISSION_FORM.md` for the ready-to-submit form copy.
+See `JUDGES.md` for credentials, replay fallback, and FAQ, and `docs/SUBMISSION_FORM.md` for the ready-to-submit form copy.

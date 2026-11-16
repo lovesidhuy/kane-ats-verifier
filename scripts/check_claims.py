@@ -18,9 +18,9 @@ DOC_FILES = [
     REPO_ROOT / "README.md",
     REPO_ROOT / "HACKATHON_SUBMISSION.md",
     REPO_ROOT / "JUDGES.md",
-    REPO_ROOT / "HANDOFF.txt",
-    REPO_ROOT / "DEMO_SCRIPT.md",
-    REPO_ROOT / "SOCIAL_POSTS.md",
+    REPO_ROOT / "docs" / "HANDOFF.txt",
+    REPO_ROOT / "docs" / "DEMO_SCRIPT.md",
+    REPO_ROOT / "docs" / "SOCIAL_POSTS.md",
 ]
 
 STALE_PATTERNS = [
