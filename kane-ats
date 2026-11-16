@@ -4,8 +4,15 @@ import os
 import sys
 from pathlib import Path
 
-# Auto re-exec with modern Python 3.10+ if invoked with legacy system Python (e.g. macOS /usr/bin/python3)
-if sys.version_info < (3, 10):
+# Auto re-exec with modern Python 3.10+ if invoked with legacy system Python or Python missing dependencies
+needs_reexec = sys.version_info < (3, 10)
+if not needs_reexec:
+    try:
+        import pytest, flask, yaml
+    except ImportError:
+        needs_reexec = True
+
+if needs_reexec:
     for cand in [
         "/opt/homebrew/bin/python3.14",
         "/opt/homebrew/opt/python@3.14/bin/python3.14",
@@ -13,7 +20,7 @@ if sys.version_info < (3, 10):
         "/opt/homebrew/bin/python3.11",
         "/usr/local/bin/python3",
     ]:
-        if os.path.exists(cand):
+        if os.path.exists(cand) and cand != sys.executable:
             os.execv(cand, [cand] + sys.argv)
 
 # Ensure repo root is on sys.path
