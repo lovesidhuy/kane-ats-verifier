@@ -49,7 +49,7 @@ def test_failed_actions_are_not_a_pass():
     events = kane_loop.parse_ndjson((FIXTURES / actions["file"]).read_text(encoding="utf-8"), strict=True)
     assert events
     assert all(event.get("status") == "success" for event in events)
-    verdict = kane_loop.judge_attempt(
+    verdict = kane_loop.evaluate_attempt(
         console_events=[],
         result_status=actions["result_status"],
         pack_status=actions["pack_status"],
@@ -61,12 +61,12 @@ def test_failed_actions_are_not_a_pass():
 
 def test_console_500_is_the_ashby_failure_and_clean_rerun_passes():
     attempts = kane_loop.replay_attempts()
-    failed = kane_loop.judge_attempt(
+    failed = kane_loop.evaluate_attempt(
         console_events=attempts[0]["console_events"],
         result_status=attempts[0]["result_status"],
         pack_status=attempts[0]["pack_status"],
     )
-    passed = kane_loop.judge_attempt(
+    passed = kane_loop.evaluate_attempt(
         console_events=attempts[1]["console_events"],
         result_status=attempts[1]["result_status"],
         pack_status=attempts[1]["pack_status"],
@@ -85,7 +85,7 @@ def test_failure_yaml_loaded_from_pack():
 
 
 def test_evidence_valid_text_does_not_override_a_failed_result():
-    verdict = kane_loop.judge_attempt(
+    verdict = kane_loop.evaluate_attempt(
         console_events=[
             {
                 "level": "info",

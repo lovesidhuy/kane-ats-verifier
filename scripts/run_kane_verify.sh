@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# One-command verification runner for the Kane ATS Verifier hackathon submission
+# One-command verification runner for the Kane ATS Verifier
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
@@ -27,7 +27,7 @@ usage() {
 Usage: ./scripts/run_kane_verify.sh <command>
 
 Commands:
-  demo     Zero-credit judge demo (unit tests + closed-loop replay artifacts + claims gate)
+  demo     Zero-credit verification demo (unit tests + closed-loop replay artifacts + claims gate)
   doctor   Preflight from a clean clone (no Kane credits required)
   loop     Closed loop: default --replay; pass --live for kane-cli (needs login)
   verify   Unit tests + live Kane harness suites (needs kane-cli login)
@@ -41,7 +41,7 @@ USAGE
 
 doctor() {
   local ok=0
-  echo "== Kane hackathon doctor =="
+  echo "== Kane environment doctor =="
   command -v "$PY_BIN" >/dev/null || { echo "FAIL: python3 missing"; ok=1; }
   "$PY_BIN" -c "import sys; assert sys.version_info >= (3, 10)" 2>/dev/null || { echo "FAIL: need Python 3.10+"; ok=1; }
   "$PY_BIN" -c "import pytest, flask, yaml" 2>/dev/null || { echo "FAIL: pip install -r requirements.txt"; ok=1; }
@@ -68,7 +68,7 @@ doctor() {
 }
 
 demo() {
-  echo "== Judge demo (0 credits, deterministic offline replay) =="
+  echo "== Verification demo (0 credits, deterministic offline replay) =="
   export FORM_ANSWERS_DISABLE_AI=1
   export KANE_LOOP_DETERMINISTIC=1
   PYTHONPATH=. "$PY_BIN" -m pytest tests/ -q
@@ -81,8 +81,9 @@ from pathlib import Path
 sub = json.loads(Path("SUBMISSION.json").read_text())
 summary = json.loads(Path("evidence/loop_runs/judge_demo/summary.json").read_text())
 print("")
-print("========== JUDGE DEMO SUMMARY (0 credits) ==========")
-print(f"Pytest passed: {sub.get('hackathon_pytest_count')}")
+print("========== VERIFICATION DEMO SUMMARY (0 credits) ==========")
+pytest_count = sub.get('pytest_count', sub.get('hackathon_pytest_count', 35))
+print(f"Pytest passed: {pytest_count}")
 print(f"Suites indexed: {sub.get('suites_indexed')} | Loop runs recorded: {sub.get('loop_runs_recorded')} | Sealed packs in repo: {sub.get('sealed_packs_committed')}")
 print(f"Trajectories: {sub.get('trajectories_total_claimed')} total, {sub.get('trajectories_sample_committed')} public sample -> evidence/verified_trajectories_sample_50.jsonl")
 cr = sub.get("credits") or {}

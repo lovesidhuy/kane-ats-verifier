@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reconcile headline numbers vs evidence/index files and judge-facing docs."""
+"""Reconcile headline numbers vs evidence/index files and documentation."""
 
 from __future__ import annotations
 
@@ -16,8 +16,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 DOC_FILES = [
     REPO_ROOT / "README.md",
-    REPO_ROOT / "HACKATHON_SUBMISSION.md",
-    REPO_ROOT / "JUDGES.md",
+    REPO_ROOT / "ARCHITECTURE.md",
+    REPO_ROOT / "VERIFICATION.md",
     REPO_ROOT / "docs" / "DEMO_SCRIPT.md",
     REPO_ROOT / "docs" / "SOCIAL_POSTS.md",
 ]
@@ -37,12 +37,12 @@ def _required_snippets(sub: dict) -> list[tuple[str, str]]:
         ("trajectories_total", str(sub["trajectories_total_claimed"])),
         ("trajectories_sample", str(sub["trajectories_sample_committed"])),
         ("loop_runs", str(sub["loop_runs_recorded"])),
-        ("hackathon_pytest", str(sub["hackathon_pytest_count"])),
+        ("pytest_count", str(sub["pytest_count"])),
         ("credits_ledger", f"{sub['credits']['ledger_rows_sum']:.2f}".rstrip("0").rstrip(".")),
     ]
 
 
-def _hackathon_pytest_count() -> int:
+def _collect_pytest_count() -> int:
     candidates = [
         [sys.executable, "-m", "pytest", "tests/", "--collect-only", "-q"],
         ["/opt/homebrew/bin/pytest", "tests/", "--collect-only", "-q"],
@@ -79,8 +79,8 @@ def _credits_from_ledger() -> tuple[float, float]:
 
 CLAIM_REQUIRED_IN = {
     "README.md",
-    "HACKATHON_SUBMISSION.md",
-    "JUDGES.md",
+    "ARCHITECTURE.md",
+    "VERIFICATION.md",
 }
 
 
@@ -116,13 +116,13 @@ def main() -> int:
         errors.append("missing evidence/evidence_index.json — run scripts/evidence_index.py")
 
     ledger_sum, ledger_delta = _credits_from_ledger()
-    pytest_h = _hackathon_pytest_count()
-    if pytest_h < 1:
-        errors.append("could not collect hackathon pytest count")
+    pytest_cnt = _collect_pytest_count()
+    if pytest_cnt < 1:
+        errors.append("could not collect unit test count")
 
     submission = {
-        "hackathon": "Kane CLI Online Hackathon",
-        "repo_note": "Clean standalone hackathon artifact (initialized Nov 15, 2026)",
+        "framework": "Kane ATS Verifier",
+        "repo_note": "Clean standalone verification artifact (initialized Nov 15, 2026)",
         "suites_indexed": index.get("suite_count"),
         "trajectories_total_claimed": manifest.get("total_verified_trajectories"),
         "trajectories_sample_committed": manifest.get("public_sample_count"),
@@ -131,13 +131,14 @@ def main() -> int:
         "cl2_passed": (index.get("loop_runs") or {}).get("cl2_visa_seed_live", {}).get("passed"),
         "demo_run_id": "judge_demo",
         "sealed_packs_committed": index.get("sealed_packs_committed"),
-        "hackathon_pytest_count": pytest_h,
+        "pytest_count": pytest_cnt,
+        "hackathon_pytest_count": pytest_cnt,
         "replay_command": "./scripts/run_kane_verify.sh demo",
         "credits": {
             "ledger_rows_sum": ledger_sum,
             "ledger_balance_delta": ledger_delta,
             "footnote": (
-                "ledger.csv totals recorded live Kane CLI loop runs across the hackathon sprint."
+                "ledger.csv totals recorded live Kane CLI loop runs across verification sprints."
             ),
         },
     }

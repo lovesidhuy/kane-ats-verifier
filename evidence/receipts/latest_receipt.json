@@ -1,7 +1,7 @@
 {
-  "receipt_id": "rcpt_201084a8e278",
+  "receipt_id": "rcpt_b43af7249b5b",
   "fingerprint": "f7b168cc0ece4ee0",
-  "timestamp_utc": "2026-11-16T07:36:48.165260+00:00",
+  "timestamp_utc": "2026-11-16T07:52:00.582479+00:00",
   "ats_type": "bamboohr",
   "target_url": "http://127.0.0.1:8766/ats/bamboohr",
   "intercepted_method": "POST",
@@ -12,8 +12,8 @@
   "unmapped_required_count": 0,
   "field_count": 5,
   "required_fields_status": {
-    "first_name": "valid",
     "email": "valid",
+    "first_name": "valid",
     "last_name": "valid"
   },
   "payload": {

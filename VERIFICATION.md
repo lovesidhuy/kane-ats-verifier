@@ -1,6 +1,6 @@
-# Judges quickstart
+# Verification & Quickstart Guide
 
-## Replay (no LambdaTest login, 0 credits)
+## Offline Verification Replay (No credentials, 0 credits)
 
 Run with the unified `./kane-ats` CLI or shell entrypoint:
 
@@ -75,6 +75,6 @@ Use replay only (`demo`). Pass/fail is in `test_md_done.overall_status` inside `
 | Question | Answer |
 |----------|--------|
 | Where is the engine? | Clean standalone `ats_verifier/` + `tests/kane/harness.py` + `scripts/kane_loop.py` |
-| CAPTCHA/proxies? | **Out of scope / not included** — see `HACKATHON_SCOPE.md` |
+| CAPTCHA/proxies? | **Out of scope / not included** — see `SCOPE.md` |
 | Validate evidence zip? | Integrity only; use `overall_status` for pass/fail |
-| Claims table | `README_KANE_HACKATHON.md` + `python3 scripts/check_claims.py` |
+| Claims table | `SPECIFICATION.md` + `python3 scripts/check_claims.py` |

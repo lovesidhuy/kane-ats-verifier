@@ -30,12 +30,12 @@ This dataset contains **reward-filtered, cryptographically verified browser-agen
 
 ---
 
-## 2. Automatic Grader & Reward-Filtering Methodology
+## 2. Automatic Evaluation & Reward-Filtering Methodology
 
-Unlike unverified web-scraping or raw Playwright recordings, **only runs that pass Kane CLI's automatic grader** are exported:
+Unlike unverified web-scraping or raw Playwright recordings, **only runs that pass Kane CLI's verification evaluation** are exported:
 1. **Tier 1 (Live Public ATS):** Chrome navigates to live no-login public postings (`job-boards.greenhouse.io/anthropic/jobs/5183044008`, `jobs.lever.co/leverdemo`), fills fields, asserts DOM values, and aborts before Submit.
-2. **Tier 2 (Isolated Dry-Run Sandbox):** `tests/kane/harness.py` wires 10 synthetic personas × 7 ATS layouts × 4 variants (`standard`, `mutated_ids`, `strict_policy_screening`, `dirty_dedup_batch`) to JobsFarm's untouched `DOMAutofillEngine`, `resolve_answer()`, and `deduplicate()`.
-3. **Cryptographic Gate:** Every `.evidence` pack is validated locally via `kane-cli evidence validate` (`evidence: valid (L1, status finalized)`). **Pass/fail for grading uses `test_md_done.overall_status`**, not validate alone. Failed or unverified runs are excluded from the export.
+2. **Tier 2 (Isolated Dry-Run Sandbox):** `tests/kane/harness.py` wires 10 synthetic personas × 7 ATS layouts × 4 variants (`standard`, `mutated_ids`, `strict_policy_screening`, `dirty_dedup_batch`) to `ats_verifier`'s `DOMAutofillEngine`, `resolve_answer()`, and `deduplicate()`.
+3. **Cryptographic Gate:** Every `.evidence` pack is validated locally via `kane-cli evidence validate` (`evidence: valid (L1, status finalized)`). **Pass/fail verification uses `test_md_done.overall_status`**, not validate alone. Failed or unverified runs are excluded from the export.
 4. **Closed-loop trajectories:** `evidence/loop_runs/cl2_visa_seed_live/` (agent policy fix, seed still planted) and replay fixtures in `tests/fixtures/ndjson/`.
 
 ---

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Standalone Kane CLI Test Harness using the fresh ats_verifier package.
-Zero dependency on pre-hackathon codebases.
+Zero dependency on legacy codebases.
 """
 
 from __future__ import annotations
@@ -976,7 +976,7 @@ def api_resolve_fields():
                 if "sponsorship" in policy:
                     _set_answer(fld, policy["sponsorship"])
                 elif _active_loop_seed_bug() == "visa_wrong_answer" and persona_id == "visa_sponsorship":
-                    _set_answer(fld, "No")  # planted bug (CL-2); labeled in hackathon docs
+                    _set_answer(fld, "No")  # planted bug (CL-2); labeled in verification docs
                 else:
                     _set_answer(fld, persona["sponsorship"])
             elif "years of python" in label or "years_exp" in fid:

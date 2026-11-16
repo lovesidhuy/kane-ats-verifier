@@ -1,6 +1,6 @@
-# Kane CLI Hackathon Submission — Closed-Loop ATS Verifier
+# Kane ATS Verifier — Closed-Loop ATS Verification Specification
 
-**Judges start here.** This is a clean, standalone verification artifact built during the KaneCLI Online Hackathon (Nov 12–19, 2026). All application code (`ats_verifier/`), verification harness (`tests/kane/harness.py`), closed loop (`scripts/kane_loop.py`), suites (`tests/kane/`), and sealed packs (`evidence/`) live in this fresh repository.
+**Overview:** This is a clean, standalone verification system. All application code (`ats_verifier/`), verification harness (`tests/kane/harness.py`), closed loop (`scripts/kane_loop.py`), suites (`tests/kane/`), and sealed packs (`evidence/`) live in this repository.
 
 ## One-liner
 
@@ -32,7 +32,7 @@ Evidence: `evidence/loop_runs/cl2_visa_seed_live/summary.json` (attempt 1 **`fai
 
 ## What we do **not** ship
 
-CAPTCHA solvers, residential proxies, anti-detect browsers, stealth plugins, or mass-apply submission are **not part of this submission** (`HACKATHON_SCOPE.md`).
+CAPTCHA solvers, residential proxies, anti-detect browsers, stealth plugins, or real external form submissions are **explicitly out of scope** (`SCOPE.md`).
 
 ## Claims ↔ evidence
 
@@ -41,7 +41,7 @@ Canonical headline numbers: **`python3 scripts/check_claims.py`** → `SUBMISSIO
 | Claim | Proof |
 |-------|--------|
 | **54** suites indexed | `evidence/evidence_index.json` |
-| **29** pytest tests | `./scripts/run_kane_verify.sh demo` |
+| **35** pytest tests | `./kane-ats demo` (or `./scripts/run_kane_verify.sh demo`) |
 | **45** sealed packs | `evidence/*.evidence` |
 | **190** trajectories (**50** sample) | `evidence/dataset_manifest.json` |
 | **23** loop runs | `evidence/loop_runs/` |
@@ -50,4 +50,4 @@ Canonical headline numbers: **`python3 scripts/check_claims.py`** → `SUBMISSIO
 | Kane caught real bugs | `KANE_CAUGHT.md` (K-16 dedupe 415 fixed; CL-2 visa seed) |
 | Network no-submit guard | `tests/kane/36_network_no_submit_guard_test.md` |
 
-See `JUDGES.md` for credentials, replay fallback, and FAQ, and `docs/SUBMISSION_FORM.md` for the ready-to-submit form copy.
+See `VERIFICATION.md` for credentials, replay fallback, and FAQ.

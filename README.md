@@ -4,19 +4,20 @@
   <strong>An agent that fills job applications on any ATS; Kane CLI proves it never submits a broken one — turning every green run into verified training data.</strong>
 </p>
 
-## Judges start here
+## Technical Documentation & Architecture
 
 | Doc | Purpose |
 |-----|---------|
-| [SUBMISSION_FORM.md](docs/SUBMISSION_FORM.md) | Ready-to-submit hackathon form answers, one-paragraph pitch, and publish steps |
-| [README_KANE_HACKATHON.md](README_KANE_HACKATHON.md) | One-liner, architecture, and claims-to-evidence table |
-| [JUDGES.md](JUDGES.md) | **0-credit** cold-clone replay path (`doctor` + `demo`) |
-| [HACKATHON_SUBMISSION.md](HACKATHON_SUBMISSION.md) | Rubric breakdown (Ships / Verified / Closed Loop / Craft) |
-| [KANE_CAUGHT.md](KANE_CAUGHT.md) | Real bugs Kane CLI caught (incl. K-16 dedupe 415 and CL-2 visa seed) |
+| [VERIFICATION.md](VERIFICATION.md) | **0-credit** verification replay path (`doctor` + `demo`) & credentials guide |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Technical architecture & system capabilities (Engine, Verification, Closed-Loop, Tooling) |
+| [SPECIFICATION.md](SPECIFICATION.md) | Verification claims-to-evidence matrix & platform specification |
+| [KANE_CAUGHT.md](KANE_CAUGHT.md) | Real regressions caught and triaged by Kane CLI (incl. K-16 dedupe 415 and CL-2 visa seed) |
+| [DATASET_CARD.md](DATASET_CARD.md) | 190-trajectory reward-filtered browser agent dataset card |
+| [SCOPE.md](SCOPE.md) | Verification boundaries & security safeguards |
 
-## Clean Hackathon Artifact (Built Nov 12–15, 2026)
+## Clean Standalone Verification Architecture
 
-This repository is a clean, standalone verification artifact initialized during the hackathon:
+This repository is a clean, standalone verification system:
 - `ats_verifier/` — standalone DOM autofill engine, deterministic QA policy resolver, and discovery deduplicator (no legacy code, no proxies, no CAPTCHA solvers).
 - `tests/kane/harness.py` — local multi-ATS & multi-persona verification server (`127.0.0.1:8766`, dry-run + network no-submit guard).
 - `scripts/kane_loop.py` — closed-loop runner: executes Kane CLI, parses NDJSON + `failure.yaml`, emits a `FixPlan`, writes `tests/kane/.loop_agent_policy.json`, and retries until Kane passes.
@@ -50,10 +51,10 @@ python3 scripts/check_claims.py
 
 Artifacts: `evidence/loop_runs/judge_demo/summary.json` (replay **red → fix → green**), `evidence/receipts/` (preflight compliance receipts).
 
-## Scope
+## Scope & Safety Safeguards
 
 - **In scope:** `ats_verifier/`, `tests/kane/`, `scripts/kane_loop.py`, `evidence/`.
-- **Out of scope:** CAPTCHA solving, residential proxies, anti-detect browsers, and real-employer form submission — see [HACKATHON_SCOPE.md](HACKATHON_SCOPE.md).
+- **Out of scope:** CAPTCHA solving, residential proxies, anti-detect browsers, and real-employer form submission — see [SCOPE.md](SCOPE.md).
 
 ## License
 

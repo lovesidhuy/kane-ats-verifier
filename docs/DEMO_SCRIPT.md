@@ -1,10 +1,10 @@
 # 3-minute demo script (Nov 2026)
 
-Map each beat to judging criteria. Commands assume repo root after `git clone`.
+Map each beat to verification milestones. Commands assume repo root after `git clone`.
 
 | Time | Criterion | Show | Say |
 |------|-----------|------|-----|
-| 0:00–0:30 | **Ships** | `README.md` → `README_KANE_HACKATHON.md` | Standalone `ats_verifier/` + Kane CLI as grader; harness dry-run + network guard prevent real submits. |
+| 0:00–0:30 | **Ships** | `README.md` → `SPECIFICATION.md` | Standalone `ats_verifier/` + Kane CLI as verification engine; harness dry-run + network guard prevent real submits. |
 | 0:30–1:00 | **Verified** | `./kane-ats demo` (or `./scripts/run_kane_verify.sh demo`) | 35 pytest + replay; numbers from `check_claims` / **54** suites, **45** packs, **190** trajectories (**50** sample). |
 | 1:00–2:00 | **Closed loop** | `./kane-ats heal` (`summary.json`, `KANE_CAUGHT.md`) | CL-2: attempt 1 **failed** on visa seed, agent writes `policy_override` to `.loop_agent_policy.json`, attempt 2 **passed** with seed still active (~39.6 cr). |
 | 2:00–2:30 | **Craft** | `evidence/verified_trajectories_sample_50.jsonl`, `scripts/kane_loop.py` | Reward-filtered trajectories; replay is 0 credits; sealed packs are L1 evidence. |
@@ -26,4 +26,4 @@ python3 scripts/check_claims.py
 
 ## 60-second pitch
 
-> Our autofill agent fills complex ATS forms; **Kane CLI** verifies every run before submit. Judges replay the closed loop in **0 credits** with `./kane-ats demo`. We ship **54** indexed suites, **45** sealed packs, **23** loop runs, and **190** verified trajectories — and we keep failed evidence when Kane catches bugs like the dedupe POST 415 (K-16).
+> Our autofill agent fills complex ATS forms; **Kane CLI** verifies every run before submit. Reviewers replay the closed loop in **0 credits** with `./kane-ats demo`. We ship **54** indexed suites, **45** sealed packs, **23** loop runs, and **190** verified trajectories — and we keep failed evidence when Kane catches bugs like the dedupe POST 415 (K-16).

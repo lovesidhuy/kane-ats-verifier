@@ -1,7 +1,7 @@
 """Pre-Submit Payload Receipt & Boundary Audit for ATS Dry-Run Interceptions.
 
 Captures, validates, and serializes structured receipts for intercepted form
-submissions so judges and compliance auditors can verify that:
+submissions so auditors and compliance reviewers can verify that:
 1. Target endpoint URL and HTTP method were captured.
 2. Complete key-value payload was mapped (0 null or unmapped required inputs).
 3. Client-side HTML5/ARIA validation passed (form.checkValidity() and 0 aria-invalid).

@@ -12,7 +12,7 @@ Run: `python3 scripts/scan_secrets.py`
 
 | Check | Result |
 |-------|--------|
-| Secret patterns in hackathon paths | **0 hits** (after skipping vendor trees) |
+| Secret patterns in repository paths | **0 hits** (after skipping vendor trees) |
 | Files &gt; 5MB in repo | large media/trajectories gitignored or sample only |
 | `SUBMISSION.json` / ledger | no credentials |
 

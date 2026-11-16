@@ -36,7 +36,7 @@
             "kane_failure": null,
             "policy": {
               "source": "kane_loop_agent_fix",
-              "updated_utc": "2026-11-16T07:36:48.640371+00:00",
+              "updated_utc": "2026-11-16T07:52:01.072988+00:00",
               "rules": {
                 "fallback_strategy": "aria_label_or_for_attribute",
                 "regex_id_ignore": "^fld_[0-9a-z]+$",

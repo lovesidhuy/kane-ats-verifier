@@ -367,7 +367,7 @@ def parse_attempt_failures(
     }
 
 
-def judge_attempt(
+def evaluate_attempt(
     *,
     console_events: Iterable[dict[str, Any]],
     agent_events: Iterable[dict[str, Any]] | None = None,
@@ -394,6 +394,9 @@ def judge_attempt(
         pack_status=pack_status,
         failure_yaml=failure_yaml,
     )
+
+
+judge_attempt = evaluate_attempt  # backward compatibility alias
 
 
 def harness_has_list_index_bug(source: str) -> bool:
@@ -605,7 +608,7 @@ def run_closed_loop(
                 harness_source=source,
             )
         parsed = parse_attempt_failures(attempt)
-        verdict = judge_attempt(
+        verdict = evaluate_attempt(
             console_events=attempt.get("console_events") or [],
             agent_events=attempt.get("agent_events") or [],
             result_status=str(attempt.get("result_status") or ""),
@@ -1063,7 +1066,7 @@ def run_live_loop(
         completed = runner(command)
         attempt = attempt_from_kane_output(completed.stdout or "", completed.returncode)
         parsed = parse_attempt_failures(attempt)
-        verdict = judge_attempt(
+        verdict = evaluate_attempt(
             console_events=attempt.get("console_events") or [],
             agent_events=attempt.get("agent_events") or [],
             result_status=str(attempt.get("result_status") or ""),

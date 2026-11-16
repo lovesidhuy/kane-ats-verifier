@@ -1,6 +1,6 @@
 {
-  "hackathon": "Kane CLI Online Hackathon",
-  "repo_note": "Clean standalone hackathon artifact (initialized Nov 15, 2026)",
+  "framework": "Kane ATS Verifier",
+  "repo_note": "Clean standalone verification artifact (initialized Nov 15, 2026)",
   "suites_indexed": 54,
   "trajectories_total_claimed": 190,
   "trajectories_sample_committed": 50,
@@ -9,11 +9,12 @@
   "cl2_passed": true,
   "demo_run_id": "judge_demo",
   "sealed_packs_committed": 45,
+  "pytest_count": 35,
   "hackathon_pytest_count": 35,
   "replay_command": "./scripts/run_kane_verify.sh demo",
   "credits": {
     "ledger_rows_sum": 1119.3071,
     "ledger_balance_delta": 1742.0473,
-    "footnote": "ledger.csv totals recorded live Kane CLI loop runs across the hackathon sprint."
+    "footnote": "ledger.csv totals recorded live Kane CLI loop runs across verification sprints."
   }
 }

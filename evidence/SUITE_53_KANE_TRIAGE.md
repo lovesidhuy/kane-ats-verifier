@@ -19,7 +19,7 @@ Step 2 expects `dedupe-summary` labels (e.g. "Raw Scraped Leads") **after** clic
 | `v1_explore_53_live` | `~/.testmuai/.../0b372879.../51420380-ca49-4022-babf-b7b7538086ee.evidence` |
 | `v1_explore_53_live_b` | `~/.testmuai/.../45b0c9cd.../a63d9e1e-3b1c-419b-bd9f-cc26bdc60011.evidence` |
 
-Judges: `kane-cli evidence serve <path>` on this Mac.
+To inspect: `kane-cli evidence serve <path>` on this Mac.
 
 ## Status
 
