@@ -5,8 +5,10 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:$PATH"
+
 pick_python() {
-  for cand in "${PYTHON_BIN:-}" python3 /opt/homebrew/opt/python@3.14/bin/python3.14 python3.12 python3.11; do
+  for cand in "${PYTHON_BIN:-}" python3 /opt/homebrew/bin/python3.14 /opt/homebrew/opt/python@3.14/bin/python3.14 python3.14 python3.12 python3.11; do
     [[ -n "$cand" ]] || continue
     if command -v "$cand" >/dev/null 2>&1; then
       if "$cand" -c "import pytest, flask, yaml" 2>/dev/null; then
