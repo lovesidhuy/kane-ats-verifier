@@ -4,7 +4,7 @@
 
 ## Failure
 
-Step 2 expects `dedupe-summary` labels (e.g. "Raw Scraped Leads") **after** clicking **Run JobsFarm Discovery Deduplication**. The UI calls `fetch('/api/run-dedupe', { method: 'POST' })` without JSON `Content-Type`; Flask returns **415 Unsupported Media Type**, so `#dedupe-summary` stays `hidden`.
+Step 2 expects `dedupe-summary` labels (e.g. "Raw Scraped Leads") **after** clicking **Run Discovery Deduplication**. The UI calls `fetch('/api/run-dedupe', { method: 'POST' })` without JSON `Content-Type`; Flask returns **415 Unsupported Media Type**, so `#dedupe-summary` stays `hidden`.
 
 ## failure.yaml (step 1-1, live_b pack)
 

@@ -55,4 +55,4 @@ Pass/fail is from `test_md_done.overall_status` / pack `result.yaml`, not `evide
 
 **V-3 mutations (fail → revert → pass):** guard-off **failed** `p0_3_suite36_broken_fail`; guard-on **passed** `p0_3_suite36_pass`; planted seed loops **failed** then agent policy **passed** (`cl2_visa_seed_live`, `cl4_email_seed_live`, `cl4_salary_seed_live`, `cl2_visa_seed_live_v2`, `cl4_salary_seed_live_v2`, `cl4_email_seed_live_v2`).
 
-**Explore note:** Four explore campaigns (`exploration_id` in `AGENTS.md`) committed **141** lease deltas; `50`–`54` regressions are live Kane smokes on harness frontiers discovered during explore.
+**Explore note:** Four explore campaigns (`exploration_id: 01a1d795-fb13-7aa7-9548-209c0fce60c0`) committed **141** lease deltas; `50`–`54` regressions are live Kane smokes on harness frontiers discovered during explore.

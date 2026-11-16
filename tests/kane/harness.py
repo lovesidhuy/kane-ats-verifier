@@ -298,7 +298,7 @@ INDEX_HTML = """<!DOCTYPE html>
       <a href="/tools/qa-bank" id="link-qa-bank"
          class="block p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition">
         <div class="font-bold text-cyan-400">🧠 7,300+ QA Bank &amp; Policy Brain Tester</div>
-        <p class="text-xs text-slate-400 mt-1">Query <code>jobbots.core.shared_modules.form_answers.resolve_answer()</code> directly.</p>
+        <p class="text-xs text-slate-400 mt-1">Query <code>ats_verifier.form_answers.resolve_answer()</code> directly.</p>
       </a>
       <a href="/tools/discovery-dedupe" id="link-discovery-dedupe"
          class="block p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition">

@@ -58,7 +58,7 @@ def test_discovery_normalizer_and_dedupe_counts():
     assert uniq[0].apply_type == "COMPANY_APPLY"
 
 
-def test_harness_routes_smoke_without_jobbots():
+def test_harness_routes_smoke():
     mod = _load_harness()
     client = mod.app.test_client()
     assert client.get("/").status_code == 200

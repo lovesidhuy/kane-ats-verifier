@@ -18,7 +18,6 @@ DOC_FILES = [
     REPO_ROOT / "README.md",
     REPO_ROOT / "HACKATHON_SUBMISSION.md",
     REPO_ROOT / "JUDGES.md",
-    REPO_ROOT / "docs" / "HANDOFF.txt",
     REPO_ROOT / "docs" / "DEMO_SCRIPT.md",
     REPO_ROOT / "docs" / "SOCIAL_POSTS.md",
 ]
@@ -82,7 +81,6 @@ CLAIM_REQUIRED_IN = {
     "README.md",
     "HACKATHON_SUBMISSION.md",
     "JUDGES.md",
-    "HANDOFF.txt",
 }
 
 

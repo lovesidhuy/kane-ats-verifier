@@ -4,7 +4,7 @@ Run: `python3 scripts/scan_secrets.py`
 
 ## Policy
 
-- Scan scope: **hackathon paths** (`tests/kane/`, `scripts/`, `evidence/`, docs) — upstream `jobbots/`, `legacy/` skipped (vendor tree).
+- Scan scope: **repository paths** (`ats_verifier/`, `tests/`, `scripts/`, `evidence/`, docs).
 - `.testmuai/` and `.env` are gitignored and must not be committed.
 - Committed `.evidence` packs: **23** under `evidence/` (no API keys in repo grep).
 

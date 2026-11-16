@@ -1,4 +1,4 @@
-# CL-3 — Kane hook in the coding-agent loop (transcript sketch)
+# CL-3 — Kane hook in the agent self-healing loop (execution trace)
 
 **Hook:** after each `kane-cli testmd run`, parse NDJSON (`test_md_done`, assertion events) → `build_fixplan()` → write agent policy (`tests/kane/.loop_agent_policy.json`) → retry.
 
