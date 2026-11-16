@@ -22,7 +22,7 @@ git push -u origin main
 
 ## Remaining operator items before submitting form
 
-- [ ] Push `kane-ats-verifier` to a **new public GitHub repo** (created on or after Nov 12, 2026)
+- [x] Push `kane-ats-verifier` to a **new public GitHub repo** (created on or after Nov 12, 2026) -> https://github.com/lovesidhuy/kane-ats-verifier
 - [ ] Record 3–5 min YouTube demo (`DEMO_SCRIPT.md`)
 - [ ] Publish at least 2 public posts (`SOCIAL_POSTS.md`) on X / LinkedIn / HN / Reddit
 - [ ] Submit at `https://www.kaneclihack.sh/o/submit` using `SUBMISSION_FORM.md`
