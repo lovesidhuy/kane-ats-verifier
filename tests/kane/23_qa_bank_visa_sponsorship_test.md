@@ -11,7 +11,7 @@ max_steps: 20
 ## Step 1: Open QA Bank Tester & Select Visa Sponsorship
 Navigate to http://127.0.0.1:8766/tools/qa-bank.
 Click the button "Visa Sponsorship".
-Click the button "Resolve via JobsFarm".
+Click the button "Resolve Answer from JobsFarm QA Bank".
 
 ## Step 2: Verify Deterministic Policy Output
 Assert that "No" is visible in the QA result panel.

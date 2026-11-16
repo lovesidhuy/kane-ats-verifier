@@ -25,15 +25,15 @@
     "linkedin": 24,
     "workopolis": 5,
     "qa_bank": 16,
-    "unknown": 1,
     "discovery_pipeline": 9,
+    "unknown": 1,
     "github_smoke": 1,
     "harness_index": 64
   },
   "breakdown_by_dom_variant": {
     "standard": 165,
-    "strict_policy_screening": 13,
-    "mutated_ids": 12
+    "mutated_ids": 12,
+    "strict_policy_screening": 13
   },
   "kane_evidence_validation": "100% L1 finalized"
 }

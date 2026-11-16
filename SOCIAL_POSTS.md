@@ -12,7 +12,7 @@
 
 ## LinkedIn
 
-We built a standalone verification harness and closed-loop repair engine (`kane_loop.py` + `ats_verifier/`) powered by **TestMu AI Kane CLI**: **54** `.testmd` suites indexed in `evidence/evidence_index.json`, **22** recorded loop runs, **41** sealed L1 `.evidence` packs, **190** verified browser trajectories (**50** public sample), and a **0-credit** judge demo that replays red→fix→green locally.
+We built a standalone verification harness and closed-loop repair engine (`kane_loop.py` + `ats_verifier/`) powered by **TestMu AI Kane CLI**: **54** `.testmd` suites indexed in `evidence/evidence_index.json`, **22** recorded loop runs, **45** sealed L1 `.evidence` packs, **190** verified browser trajectories (**50** public sample), and a **0-credit** judge demo that replays red→fix→green locally.
 
 Recorded live loop credits: **1119.31** in `evidence/credits_ledger.csv` (**1742.05** balance delta across runs).
 

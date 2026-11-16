@@ -53,16 +53,16 @@
     {
       "suite": "tests/kane/08_qa_bank_resolution_test.md",
       "url": "http://127.0.0.1:8766/tools/qa-bank",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "08_qa_bank_passed.evidence",
+      "status": "failed",
+      "source": "08_qa_bank_passed.evidence"
     },
     {
       "suite": "tests/kane/09_discovery_deduplication_test.md",
       "url": "http://127.0.0.1:8766/tools/discovery-dedupe",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "09_discovery_dedupe_passed.evidence",
+      "status": "failed",
+      "source": "09_discovery_dedupe_passed.evidence"
     },
     {
       "suite": "tests/kane/10_jobsfarm_github_repo_test.md",
@@ -90,7 +90,7 @@
       "url": "http://127.0.0.1:8766/ats/greenhouse?persona=senior_fullstack&variant=mutated_ids",
       "pack_in_repo": "testrun_13_30_initial.evidence",
       "status": "failed",
-      "source": "testrun_13_30_initial.evidence"
+      "source": "13_mutated_dom_greenhouse_passed.evidence"
     },
     {
       "suite": "tests/kane/14_policy_guardrails_test.md",
@@ -172,9 +172,9 @@
     {
       "suite": "tests/kane/25_mutated_dom_ashby_test.md",
       "url": "http://127.0.0.1:8766/ats/ashby?persona=senior_fullstack&variant=mutated_ids",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "25_mutated_dom_ashby_passed.evidence",
+      "status": "failed",
+      "source": "25_mutated_dom_ashby_passed.evidence"
     },
     {
       "suite": "tests/kane/26_mutated_dom_bamboohr_test.md",
@@ -1022,7 +1022,7 @@
                 "kane_failure": null,
                 "policy": {
                   "source": "kane_loop_agent_fix",
-                  "updated_utc": "2026-11-16T06:51:25.398887+00:00",
+                  "updated_utc": "2026-11-16T07:03:33.335816+00:00",
                   "fields": {
                     "api_resolve_fields": "retry_after_harness_ok"
                   }
@@ -1288,5 +1288,5 @@
       "credits": 32.7538
     }
   },
-  "sealed_packs_committed": 41
+  "sealed_packs_committed": 45
 }
