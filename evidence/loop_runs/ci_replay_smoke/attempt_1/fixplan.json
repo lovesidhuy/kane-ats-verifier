@@ -1,0 +1,12 @@
+{
+  "fingerprint": "71b3ac24bd835e2c",
+  "source": "kane_loop",
+  "items": [
+    {
+      "kind": "policy_override",
+      "target": "api_resolve_fields",
+      "value": "retry_after_harness_ok",
+      "rationale": "Harness already patched; policy path for residual API errors"
+    }
+  ]
+}

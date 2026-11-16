@@ -1,0 +1,7 @@
+{
+  "suite": "tests/kane/53_explore_discovery_dedupe_test.md",
+  "overall_status": "failed",
+  "balance_before": 7415.2651,
+  "balance_after": 7340.0865,
+  "credits": 75.1786
+}

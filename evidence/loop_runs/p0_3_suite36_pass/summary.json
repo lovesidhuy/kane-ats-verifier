@@ -1,0 +1,7 @@
+{
+  "suite": "tests/kane/36_network_no_submit_guard_test.md",
+  "overall_status": "passed",
+  "balance_before": 7822.1219,
+  "balance_after": 7776.2338,
+  "credits": 45.8881
+}

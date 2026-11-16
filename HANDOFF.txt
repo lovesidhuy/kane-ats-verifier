@@ -1,0 +1,43 @@
+================================================================================
+KANE ATS VERIFIER — HACKATHON HANDOFF
+Standalone clean artifact (initialized Nov 15, 2026)
+================================================================================
+
+1. COLD CLONE (0 credits, target < 5 min)
+-----------------------------------------
+  git clone <repo-url>
+  cd kane-ats-verifier
+  python3 -m venv .venv && source .venv/bin/activate
+  pip install -r requirements.txt
+  ./scripts/run_kane_verify.sh doctor
+  ./scripts/run_kane_verify.sh demo
+  python3 scripts/check_claims.py
+
+2. CANONICAL NUMBERS
+--------------------
+  evidence/evidence_index.json + SUBMISSION.json (via check_claims.py):
+    54 suites indexed | 18 loop runs | 23 sealed packs | 162 trajectories (50 sample)
+    29 standalone pytest tests (ats_verifier, closed loop, guard, mutation, dedupe API)
+  Credits (credits_ledger.csv):
+    ledger Σ 376.54 | balance Δ 515.09
+
+3. KEY PATHS
+------------
+  ats_verifier/                    standalone DOM autofill, QA policy, discovery dedupe
+  scripts/run_kane_verify.sh       doctor | demo | loop
+  scripts/kane_loop.py             closed loop + replay + policy override
+  scripts/check_claims.py          claims gate for CI
+  tests/kane/harness.py            local verification server (:8766)
+  evidence/loop_runs/              recorded Kane runs
+  KANE_CAUGHT.md                   what Kane caught (K-01..K-16)
+  SUBMISSION_FORM.md               copy-paste submission survey answers
+
+4. SCOPE
+--------
+  Clean hackathon-only tree: ats_verifier/, tests/, scripts/, evidence/
+  Out of scope / excluded: CAPTCHA, proxies, anti-detect browsers — HACKATHON_SCOPE.md
+
+5. PUBLISHING
+-------------
+  See PUBLISH_CHECKLIST.md and SUBMISSION_FORM.md.
+================================================================================

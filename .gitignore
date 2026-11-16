@@ -1,0 +1,55 @@
+# Environment & Secrets
+.env
+*.env
+.env.*
+!.env.example
+*.pem
+*.key
+*secret*.json
+*credentials*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+*.egg-info/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Kane closed-loop local state (planted bugs)
+tests/kane/.loop_seed_bug
+tests/kane/.loop_agent_policy.json
+
+# Application Runtime & Logs
+logs/
+*.log
+chrome-profile-*/
+browser_profiles/
+*crawlee_storage/request_queues/test-queue-*
+
+# User Profile Personal Data (keep template/example)
+profiles/my_profile/
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+# kane-cli context store: shared through a location, never merged with git
+.context/
+
+# Kane CLI local caches & gated full dataset
+.testmuai/
+tests/kane/output-*/
+verified_trajectories_full_100.jsonl
+evidence/verified_trajectories_full_100.jsonl
+run_summary.json
+step_*.json

@@ -1,0 +1,7 @@
+{
+  "suite": "tests/kane/51_explore_ashby_smoke_test.md",
+  "overall_status": "passed",
+  "balance_before": 7561.5621,
+  "balance_after": 7522.8728,
+  "credits": 38.6893
+}

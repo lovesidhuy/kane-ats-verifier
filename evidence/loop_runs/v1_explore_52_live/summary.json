@@ -1,0 +1,7 @@
+{
+  "suite": "tests/kane/52_explore_qa_bank_test.md",
+  "overall_status": "passed",
+  "balance_before": 7522.8728,
+  "balance_after": 7490.104,
+  "credits": 32.7688
+}

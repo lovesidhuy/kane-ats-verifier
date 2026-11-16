@@ -1,0 +1,7 @@
+{
+  "suite": "tests/kane/54_explore_lever_smoke_test.md",
+  "overall_status": "passed",
+  "balance_before": 7448.0189,
+  "balance_after": 7415.2651,
+  "credits": 32.7538
+}

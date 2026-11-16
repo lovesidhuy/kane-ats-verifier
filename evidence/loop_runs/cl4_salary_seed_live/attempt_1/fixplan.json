@@ -1,0 +1,12 @@
+{
+  "fingerprint": "867d3a927ba3f62e",
+  "source": "seed_bug_salary",
+  "items": [
+    {
+      "kind": "policy_override",
+      "target": "salary_expectation",
+      "value": "160000",
+      "rationale": "Kane caught salary_wrong_answer; agent applies policy_override while seed stays planted"
+    }
+  ]
+}

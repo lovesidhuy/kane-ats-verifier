@@ -1,0 +1,1008 @@
+{
+  "suite_count": 54,
+  "suites": [
+    {
+      "suite": "tests/kane/01_greenhouse_autofill_test.md",
+      "url": "http://127.0.0.1:8766/ats/greenhouse",
+      "pack_in_repo": "testrun_01_10.evidence",
+      "status": "passed",
+      "source": "loop_runs/cl4_email_seed_live"
+    },
+    {
+      "suite": "tests/kane/02_lever_autofill_test.md",
+      "url": "http://127.0.0.1:8766/ats/lever",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/03_ashby_autofill_test.md",
+      "url": "http://127.0.0.1:8766/ats/ashby",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/04_bamboohr_autofill_test.md",
+      "url": "http://127.0.0.1:8766/ats/bamboohr",
+      "pack_in_repo": "04_bamboohr_passed.evidence",
+      "status": "failed",
+      "source": "04_bamboohr_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/05_indeed_smartapply_test.md",
+      "url": "http://127.0.0.1:8766/ats/indeed",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/06_linkedin_easy_apply_test.md",
+      "url": "http://127.0.0.1:8766/ats/linkedin",
+      "pack_in_repo": "06_linkedin_passed.evidence",
+      "status": "failed",
+      "source": "06_linkedin_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/07_workopolis_jobbank_test.md",
+      "url": "http://127.0.0.1:8766/ats/workopolis",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/08_qa_bank_resolution_test.md",
+      "url": "http://127.0.0.1:8766/tools/qa-bank",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/09_discovery_deduplication_test.md",
+      "url": "http://127.0.0.1:8766/tools/discovery-dedupe",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/10_jobsfarm_github_repo_test.md",
+      "url": "https://github.com/lovesidhuy/jobsfarm",
+      "pack_in_repo": "testrun_01_10.evidence",
+      "status": "failed",
+      "source": "testrun_01_10.evidence"
+    },
+    {
+      "suite": "tests/kane/11_live_greenhouse_test.md",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5183044008",
+      "pack_in_repo": "11_live_greenhouse_passed.evidence",
+      "status": "failed",
+      "source": "11_live_greenhouse_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/12_live_lever_test.md",
+      "url": "https://jobs.lever.co/leverdemo",
+      "pack_in_repo": "12_live_lever_passed.evidence",
+      "status": "failed",
+      "source": "12_live_lever_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/13_mutated_dom_resilience_test.md",
+      "url": "http://127.0.0.1:8766/ats/greenhouse?persona=senior_fullstack&variant=mutated_ids",
+      "pack_in_repo": "testrun_13_30_initial.evidence",
+      "status": "failed",
+      "source": "testrun_13_30_initial.evidence"
+    },
+    {
+      "suite": "tests/kane/14_policy_guardrails_test.md",
+      "url": "http://127.0.0.1:8766/ats/greenhouse?persona=visa_sponsorship&variant=strict_policy_screening",
+      "pack_in_repo": "14_policy_guardrails_passed.evidence",
+      "status": "failed",
+      "source": "14_policy_guardrails_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/15_persona_new_grad_greenhouse_test.md",
+      "url": "http://127.0.0.1:8766/ats/greenhouse?persona=new_grad&variant=standard",
+      "pack_in_repo": "15_persona_new_grad_greenhouse_passed.evidence",
+      "status": "failed",
+      "source": "15_persona_new_grad_greenhouse_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/16_persona_new_grad_mutated_lever_test.md",
+      "url": "http://127.0.0.1:8766/ats/lever?persona=new_grad&variant=mutated_ids",
+      "pack_in_repo": "16_persona_new_grad_mutated_lever_passed.evidence",
+      "status": "failed",
+      "source": "16_persona_new_grad_mutated_lever_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "url": "http://127.0.0.1:8766/ats/ashby?persona=visa_sponsorship&variant=strict_policy_screening",
+      "pack_in_repo": "17_persona_visa_ashby_strict_passed.evidence",
+      "status": "passed",
+      "source": "loop_runs/live_mac_suite17_b"
+    },
+    {
+      "suite": "tests/kane/18_persona_visa_indeed_test.md",
+      "url": "http://127.0.0.1:8766/ats/indeed?persona=visa_sponsorship&variant=standard",
+      "pack_in_repo": "18_persona_visa_indeed_passed.evidence",
+      "status": "failed",
+      "source": "18_persona_visa_indeed_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/19_persona_healthcare_bamboohr_strict_test.md",
+      "url": "http://127.0.0.1:8766/ats/bamboohr?persona=healthcare_ops&variant=strict_policy_screening",
+      "pack_in_repo": "19_persona_healthcare_bamboohr_strict_passed.evidence",
+      "status": "failed",
+      "source": "19_persona_healthcare_bamboohr_strict_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/20_persona_healthcare_mutated_workopolis_test.md",
+      "url": "http://127.0.0.1:8766/ats/workopolis?persona=healthcare_ops&variant=mutated_ids",
+      "pack_in_repo": "20_persona_healthcare_mutated_workopolis_passed.evidence",
+      "status": "failed",
+      "source": "20_persona_healthcare_mutated_workopolis_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/21_persona_devops_linkedin_strict_test.md",
+      "url": "http://127.0.0.1:8766/ats/linkedin?persona=devops_contractor&variant=strict_policy_screening",
+      "pack_in_repo": "21_persona_devops_linkedin_strict_passed.evidence",
+      "status": "failed",
+      "source": "21_persona_devops_linkedin_strict_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/22_persona_devops_mutated_greenhouse_test.md",
+      "url": "http://127.0.0.1:8766/ats/greenhouse?persona=devops_contractor&variant=mutated_ids",
+      "pack_in_repo": "22_persona_devops_mutated_greenhouse_passed.evidence",
+      "status": "failed",
+      "source": "22_persona_devops_mutated_greenhouse_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/23_qa_bank_visa_sponsorship_test.md",
+      "url": "http://127.0.0.1:8766/tools/qa-bank",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/24_qa_bank_python_exp_test.md",
+      "url": "http://127.0.0.1:8766/tools/qa-bank",
+      "pack_in_repo": "24_qa_bank_python_exp_passed.evidence",
+      "status": "failed",
+      "source": "24_qa_bank_python_exp_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/25_mutated_dom_ashby_test.md",
+      "url": "http://127.0.0.1:8766/ats/ashby?persona=senior_fullstack&variant=mutated_ids",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/26_mutated_dom_bamboohr_test.md",
+      "url": "http://127.0.0.1:8766/ats/bamboohr?persona=new_grad&variant=mutated_ids",
+      "pack_in_repo": "26_mutated_dom_bamboohr_passed.evidence",
+      "status": "failed",
+      "source": "26_mutated_dom_bamboohr_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/27_strict_policy_lever_test.md",
+      "url": "http://127.0.0.1:8766/ats/lever?persona=devops_contractor&variant=strict_policy_screening",
+      "pack_in_repo": "27_strict_policy_lever_passed.evidence",
+      "status": "failed",
+      "source": "27_strict_policy_lever_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/28_strict_policy_indeed_test.md",
+      "url": "http://127.0.0.1:8766/ats/indeed?persona=healthcare_ops&variant=strict_policy_screening",
+      "pack_in_repo": "28_strict_policy_indeed_passed.evidence",
+      "status": "failed",
+      "source": "28_strict_policy_indeed_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/29_strict_policy_workopolis_test.md",
+      "url": "http://127.0.0.1:8766/ats/workopolis?persona=new_grad&variant=strict_policy_screening",
+      "pack_in_repo": "29_strict_policy_workopolis_passed.evidence",
+      "status": "failed",
+      "source": "29_strict_policy_workopolis_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/30_discovery_dedupe_verify_test.md",
+      "url": "http://127.0.0.1:8766/tools/discovery-dedupe",
+      "pack_in_repo": "testrun_13_30_initial.evidence",
+      "status": "failed",
+      "source": "testrun_13_30_initial.evidence"
+    },
+    {
+      "suite": "tests/kane/31_persona_security_analyst_test.md",
+      "url": "http://127.0.0.1:8766/ats/greenhouse?persona=security_analyst&variant=strict_policy_screening",
+      "pack_in_repo": "testrun_31_35_passed.evidence",
+      "status": "failed",
+      "source": "testrun_31_35_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/32_persona_data_engineer_test.md",
+      "url": "http://127.0.0.1:8766/ats/lever?persona=data_engineer&variant=mutated_ids",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/33_persona_product_manager_test.md",
+      "url": "http://127.0.0.1:8766/ats/ashby?persona=product_manager&variant=strict_policy_screening",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/34_persona_qa_automation_test.md",
+      "url": "http://127.0.0.1:8766/ats/bamboohr?persona=qa_automation&variant=mutated_ids",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/35_persona_international_coop_test.md",
+      "url": "http://127.0.0.1:8766/ats/linkedin?persona=international_coop&variant=strict_policy_screening",
+      "pack_in_repo": "testrun_31_35_passed.evidence",
+      "status": "failed",
+      "source": "testrun_31_35_passed.evidence"
+    },
+    {
+      "suite": "tests/kane/36_network_no_submit_guard_broken_test.md",
+      "url": "http://127.0.0.1:8766/tools/network-guard-test?guard=off",
+      "pack_in_repo": "testrun_36_47.evidence",
+      "status": "failed",
+      "source": "loop_runs/p0_3_suite36_broken_fail"
+    },
+    {
+      "suite": "tests/kane/36_network_no_submit_guard_test.md",
+      "url": "http://127.0.0.1:8766/tools/network-guard-test",
+      "pack_in_repo": "testrun_36_47.evidence",
+      "status": "passed",
+      "source": "loop_runs/p0_3_suite36_pass"
+    },
+    {
+      "suite": "tests/kane/37_security_analyst_lever_test.md",
+      "url": "http://127.0.0.1:8766/ats/lever?persona=security_analyst&variant=mutated_ids",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/38_data_engineer_greenhouse_test.md",
+      "url": "http://127.0.0.1:8766/ats/greenhouse?persona=data_engineer&variant=strict_policy_screening",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/39_product_manager_indeed_test.md",
+      "url": "http://127.0.0.1:8766/ats/indeed?persona=product_manager&variant=mutated_ids",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/40_qa_automation_workopolis_test.md",
+      "url": "http://127.0.0.1:8766/ats/workopolis?persona=qa_automation&variant=strict_policy_screening",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/41_international_coop_ashby_test.md",
+      "url": "http://127.0.0.1:8766/ats/ashby?persona=international_coop&variant=mutated_ids",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/42_security_analyst_bamboohr_test.md",
+      "url": "http://127.0.0.1:8766/ats/bamboohr?persona=security_analyst&variant=standard",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/43_data_engineer_linkedin_test.md",
+      "url": "http://127.0.0.1:8766/ats/linkedin?persona=data_engineer&variant=standard",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/44_product_manager_greenhouse_test.md",
+      "url": "http://127.0.0.1:8766/ats/greenhouse?persona=product_manager&variant=mutated_ids",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/45_qa_automation_lever_test.md",
+      "url": "http://127.0.0.1:8766/ats/lever?persona=qa_automation&variant=standard",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/46_international_coop_indeed_test.md",
+      "url": "http://127.0.0.1:8766/ats/indeed?persona=international_coop&variant=strict_policy_screening",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/47_devops_workopolis_test.md",
+      "url": "http://127.0.0.1:8766/ats/workopolis?persona=devops_contractor&variant=standard",
+      "pack_in_repo": "testrun_36_47.evidence",
+      "status": "failed",
+      "source": "testrun_36_47.evidence"
+    },
+    {
+      "suite": "tests/kane/48_dirty_dedup_batch_test.md",
+      "url": "http://127.0.0.1:8766/tools/discovery-dedupe",
+      "pack_in_repo": null,
+      "status": "not_run",
+      "source": null
+    },
+    {
+      "suite": "tests/kane/50_explore_harness_home_test.md",
+      "url": "http://127.0.0.1:8766/",
+      "pack_in_repo": null,
+      "status": "passed",
+      "source": "loop_runs/v1_explore_50_live"
+    },
+    {
+      "suite": "tests/kane/51_explore_ashby_smoke_test.md",
+      "url": "http://127.0.0.1:8766/ats/ashby",
+      "pack_in_repo": null,
+      "status": "passed",
+      "source": "loop_runs/v1_explore_51_live"
+    },
+    {
+      "suite": "tests/kane/52_explore_qa_bank_test.md",
+      "url": "http://127.0.0.1:8766/tools/qa-bank",
+      "pack_in_repo": null,
+      "status": "passed",
+      "source": "loop_runs/v1_explore_52_live"
+    },
+    {
+      "suite": "tests/kane/53_explore_discovery_dedupe_test.md",
+      "url": "http://127.0.0.1:8766/tools/discovery-dedupe",
+      "pack_in_repo": null,
+      "status": "failed",
+      "source": "loop_runs/v1_explore_53_live_b"
+    },
+    {
+      "suite": "tests/kane/54_explore_lever_smoke_test.md",
+      "url": "http://127.0.0.1:8766/ats/lever",
+      "pack_in_repo": null,
+      "status": "passed",
+      "source": "loop_runs/v1_explore_54_live"
+    }
+  ],
+  "loop_runs": {
+    "ci_replay_smoke": {
+      "mode": "replay",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "ci_replay_smoke",
+      "passed": true,
+      "stopped": null,
+      "credits": 0.0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "result_status": "failed",
+          "diagnosis": "resolve_fields_http_500",
+          "pack_status": "finalized",
+          "credits": 0.0,
+          "fixplan": {
+            "fingerprint": "71b3ac24bd835e2c",
+            "source": "kane_loop",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "api_resolve_fields",
+                "value": "retry_after_harness_ok",
+                "rationale": "Harness already patched; policy path for residual API errors"
+              }
+            ]
+          },
+          "fix": "policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "policy_override_applied",
+                "target": "api_resolve_fields",
+                "value": "retry_after_harness_ok"
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": "finalized",
+          "credits": 0.0
+        }
+      ]
+    },
+    "cl2_visa_seed_live": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "cl2_visa_seed_live",
+      "fill": {
+        "http_status": 200,
+        "persona": "visa_sponsorship",
+        "target": "http://127.0.0.1/api/resolve-fields",
+        "answer_count": 1
+      },
+      "seed_bug": "visa_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 39.57050000000072,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "seed_bug_active": "visa_wrong_answer",
+          "agent_policy": {},
+          "result_status": "failed",
+          "diagnosis": "visa_wrong_answer",
+          "pack_status": null,
+          "credits": 0.0,
+          "agent_fill": {
+            "http_status": 200,
+            "sponsorship": "Yes"
+          },
+          "fixplan": {
+            "fingerprint": "a6982b58e7cb9208",
+            "source": "seed_bug_visa",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "sponsorship",
+                "value": "Yes",
+                "rationale": "Kane reported sponsorship mismatch (expected Yes, got No); agent applies policy_override while seed stays planted"
+              }
+            ]
+          },
+          "fix": "agent_policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "agent_policy_override_applied",
+                "target": "sponsorship",
+                "value": "Yes",
+                "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+                "kane_failure": "expected_yes_got_no",
+                "policy": {
+                  "source": "kane_loop_agent_fix",
+                  "updated_utc": "2026-11-14T04:45:50.769839+00:00",
+                  "fields": {
+                    "sponsorship": "Yes"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "overall_status": "passed",
+          "seed_bug_active": "visa_wrong_answer",
+          "agent_policy": {
+            "sponsorship": "Yes"
+          },
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 7881.3104,
+      "balance_after": 7841.7399
+    },
+    "cl2_visa_seed_live_b": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "cl2_visa_seed_live_b",
+      "fill": {
+        "http_status": 200,
+        "persona": "visa_sponsorship",
+        "target": "http://127.0.0.1/api/resolve-fields",
+        "answer_count": 1
+      },
+      "seed_bug": "visa_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 0.0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "overall_status": "passed",
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 8015.8028,
+      "balance_after": 7979.9601
+    },
+    "cl4_email_seed_live": {
+      "mode": "live",
+      "suite": "tests/kane/01_greenhouse_autofill_test.md",
+      "run_id": "cl4_email_seed_live",
+      "fill": {
+        "http_status": 200,
+        "persona": "visa_sponsorship",
+        "target": "http://127.0.0.1/api/resolve-fields",
+        "answer_count": 1
+      },
+      "seed_bug": "email_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/01_greenhouse_autofill_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 78.87840000000051,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "seed_bug_active": "email_wrong_answer",
+          "agent_policy": {},
+          "result_status": "failed",
+          "diagnosis": "visa_wrong_answer",
+          "pack_status": null,
+          "credits": 0.0,
+          "agent_fill": {
+            "http_status": 200,
+            "sponsorship": "Yes"
+          },
+          "fixplan": {
+            "fingerprint": "7c2d6daa0585a8ae",
+            "source": "seed_bug_email",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "email",
+                "value": "user@example.com",
+                "rationale": "Kane caught email_wrong_answer; agent applies policy_override while seed stays planted"
+              }
+            ]
+          },
+          "fix": "agent_policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "agent_policy_override_applied",
+                "target": "email",
+                "value": "user@example.com",
+                "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+                "kane_failure": null,
+                "policy": {
+                  "source": "kane_loop_agent_fix",
+                  "updated_utc": "2026-11-14T05:08:40.505040+00:00",
+                  "fields": {
+                    "email": "user@example.com"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "overall_status": "passed",
+          "seed_bug_active": "email_wrong_answer",
+          "agent_policy": {
+            "email": "user@example.com"
+          },
+          "result_status": "passed",
+          "diagnosis": "visa_wrong_answer",
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 7715.3046,
+      "balance_after": 7636.4262
+    },
+    "cl4_salary_seed_live": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "cl4_salary_seed_live",
+      "fill": {
+        "http_status": 200,
+        "persona": "visa_sponsorship",
+        "target": "http://127.0.0.1/api/resolve-fields",
+        "answer_count": 1
+      },
+      "seed_bug": "salary_wrong_answer",
+      "seed_bug_label": "deliberately_planted",
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 42.484699999999975,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "seed_bug_active": "salary_wrong_answer",
+          "agent_policy": {},
+          "result_status": "failed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0,
+          "agent_fill": {
+            "http_status": 200,
+            "sponsorship": "Yes"
+          },
+          "fixplan": {
+            "fingerprint": "867d3a927ba3f62e",
+            "source": "seed_bug_salary",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "salary_expectation",
+                "value": "160000",
+                "rationale": "Kane caught salary_wrong_answer; agent applies policy_override while seed stays planted"
+              }
+            ]
+          },
+          "fix": "agent_policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "agent_policy_override_applied",
+                "target": "salary_expectation",
+                "value": "160000",
+                "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+                "kane_failure": null,
+                "policy": {
+                  "source": "kane_loop_agent_fix",
+                  "updated_utc": "2026-11-14T05:12:01.335205+00:00",
+                  "fields": {
+                    "salary_expectation": "160000"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "overall_status": "passed",
+          "seed_bug_active": "salary_wrong_answer",
+          "agent_policy": {
+            "salary_expectation": "160000"
+          },
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 7636.4262,
+      "balance_after": 7593.9415
+    },
+    "judge_demo": {
+      "mode": "replay",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "judge_demo",
+      "passed": true,
+      "stopped": null,
+      "credits": 0.0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "result_status": "failed",
+          "diagnosis": "resolve_fields_http_500",
+          "pack_status": "finalized",
+          "credits": 0.0,
+          "fixplan": {
+            "fingerprint": "71b3ac24bd835e2c",
+            "source": "kane_loop",
+            "items": [
+              {
+                "kind": "policy_override",
+                "target": "api_resolve_fields",
+                "value": "retry_after_harness_ok",
+                "rationale": "Harness already patched; policy path for residual API errors"
+              }
+            ]
+          },
+          "fix": "agent_policy_override_applied",
+          "diff": {
+            "steps": [
+              {
+                "action": "agent_policy_override_applied",
+                "target": "api_resolve_fields",
+                "value": "retry_after_harness_ok",
+                "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+                "kane_failure": null,
+                "policy": {
+                  "source": "kane_loop_agent_fix",
+                  "updated_utc": "2026-11-16T01:02:51.386959+00:00",
+                  "fields": {
+                    "api_resolve_fields": "retry_after_harness_ok"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "attempt": 2,
+          "passed": true,
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": "finalized",
+          "credits": 0.0
+        }
+      ]
+    },
+    "live_cl1_suite17": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "live_cl1_suite17",
+      "fill": {
+        "http_status": 200,
+        "persona": "visa_sponsorship",
+        "target": "http://127.0.0.1/api/resolve-fields",
+        "answer_count": 1
+      },
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": false,
+      "stopped": "needs_human",
+      "credits": 0.0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "result_status": "failed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0,
+          "stop_reason": "needs_human"
+        }
+      ],
+      "balance_before": 8109.0288,
+      "balance_after": 8109.0288
+    },
+    "live_cl1_suite17_2": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "live_cl1_suite17_2",
+      "fill": {
+        "http_status": 200,
+        "persona": "visa_sponsorship",
+        "target": "http://127.0.0.1/api/resolve-fields",
+        "answer_count": 1
+      },
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180",
+        "--username",
+        "lovesidhuy",
+        "--access-key",
+        "LT_g8dq1yr3trJuAGjbp8ZKRq8EzfYXoXizvcrHsAM85nIdKrc"
+      ],
+      "passed": false,
+      "stopped": "kane_lock_denied",
+      "credits": 0.0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "result_status": "failed",
+          "diagnosis": "kane_lock_denied",
+          "pack_status": null,
+          "credits": 0.0,
+          "stop_reason": "kane_lock_denied"
+        }
+      ],
+      "balance_before": 8109.0288,
+      "balance_after": 8109.0288
+    },
+    "live_mac_suite17": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "live_mac_suite17",
+      "fill": {
+        "http_status": 200,
+        "persona": "visa_sponsorship",
+        "target": "http://127.0.0.1/api/resolve-fields",
+        "answer_count": 1
+      },
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": false,
+      "stopped": "needs_human",
+      "credits": 0.0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": false,
+          "overall_status": "failed",
+          "result_status": "failed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0,
+          "stop_reason": "needs_human"
+        }
+      ],
+      "balance_before": 8088.0801,
+      "balance_after": 8080.021
+    },
+    "live_mac_suite17_b": {
+      "mode": "live",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "run_id": "live_mac_suite17_b",
+      "fill": {
+        "http_status": 200,
+        "persona": "visa_sponsorship",
+        "target": "http://127.0.0.1/api/resolve-fields",
+        "answer_count": 1
+      },
+      "command": [
+        "kane-cli",
+        "testmd",
+        "run",
+        "tests/kane/17_persona_visa_ashby_strict_test.md",
+        "--agent",
+        "--headless",
+        "--timeout",
+        "180"
+      ],
+      "passed": true,
+      "stopped": null,
+      "credits": 0.0,
+      "attempts": [
+        {
+          "attempt": 1,
+          "passed": true,
+          "overall_status": "passed",
+          "result_status": "passed",
+          "diagnosis": null,
+          "pack_status": null,
+          "credits": 0.0
+        }
+      ],
+      "balance_before": 8080.021,
+      "balance_after": 8029.7034
+    },
+    "p0_3_suite36_broken_fail": {
+      "suite": "tests/kane/36_network_no_submit_guard_broken_test.md",
+      "overall_status": "failed",
+      "balance_before": 7715.3046,
+      "balance_after": 7692.8586,
+      "credits": 22.446
+    },
+    "p0_3_suite36_pass": {
+      "suite": "tests/kane/36_network_no_submit_guard_test.md",
+      "overall_status": "passed",
+      "balance_before": 7822.1219,
+      "balance_after": 7776.2338,
+      "credits": 45.8881
+    },
+    "v1_explore_50_live": {
+      "suite": "tests/kane/50_explore_harness_home_test.md",
+      "overall_status": "passed",
+      "balance_before": 7593.9415,
+      "balance_after": 7561.5621,
+      "credits": 32.3794
+    },
+    "v1_explore_51_live": {
+      "suite": "tests/kane/51_explore_ashby_smoke_test.md",
+      "overall_status": "passed",
+      "balance_before": 7561.5621,
+      "balance_after": 7522.8728,
+      "credits": 38.6893
+    },
+    "v1_explore_52_live": {
+      "suite": "tests/kane/52_explore_qa_bank_test.md",
+      "overall_status": "passed",
+      "balance_before": 7522.8728,
+      "balance_after": 7490.104,
+      "credits": 32.7688
+    },
+    "v1_explore_53_live": {
+      "suite": "tests/kane/53_explore_discovery_dedupe_test.md",
+      "overall_status": "failed",
+      "balance_before": 7490.104,
+      "balance_after": 7448.0189,
+      "credits": 42.0851
+    },
+    "v1_explore_53_live_b": {
+      "suite": "tests/kane/53_explore_discovery_dedupe_test.md",
+      "overall_status": "failed",
+      "balance_before": 7415.2651,
+      "balance_after": 7340.0865,
+      "credits": 75.1786
+    },
+    "v1_explore_54_live": {
+      "suite": "tests/kane/54_explore_lever_smoke_test.md",
+      "overall_status": "passed",
+      "balance_before": 7448.0189,
+      "balance_after": 7415.2651,
+      "credits": 32.7538
+    }
+  },
+  "sealed_packs_committed": 23
+}

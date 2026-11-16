@@ -1,0 +1,39 @@
+{
+  "mode": "live",
+  "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+  "run_id": "cl2_visa_seed_live_b",
+  "fill": {
+    "http_status": 200,
+    "persona": "visa_sponsorship",
+    "target": "http://127.0.0.1/api/resolve-fields",
+    "answer_count": 1
+  },
+  "seed_bug": "visa_wrong_answer",
+  "seed_bug_label": "deliberately_planted",
+  "command": [
+    "kane-cli",
+    "testmd",
+    "run",
+    "tests/kane/17_persona_visa_ashby_strict_test.md",
+    "--agent",
+    "--headless",
+    "--timeout",
+    "180"
+  ],
+  "passed": true,
+  "stopped": null,
+  "credits": 0.0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "passed": true,
+      "overall_status": "passed",
+      "result_status": "passed",
+      "diagnosis": null,
+      "pack_status": null,
+      "credits": 0.0
+    }
+  ],
+  "balance_before": 8015.8028,
+  "balance_after": 7979.9601
+}

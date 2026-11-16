@@ -1,0 +1,18 @@
+{
+  "steps": [
+    {
+      "action": "agent_policy_override_applied",
+      "target": "api_resolve_fields",
+      "value": "retry_after_harness_ok",
+      "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+      "kane_failure": null,
+      "policy": {
+        "source": "kane_loop_agent_fix",
+        "updated_utc": "2026-11-16T01:02:51.386959+00:00",
+        "fields": {
+          "api_resolve_fields": "retry_after_harness_ok"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "fixtures": [
+    {
+      "file": "attempt1_console.ndjson",
+      "evidence": "evidence/testrun_13_30_initial.evidence",
+      "inner_path": "tests/17-persona-visa-ashby-strict-12ccb310/logs/1-console.ndjson",
+      "result_status": "failed",
+      "pack_status": "finalized",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "sha256": "02729ab56d79d15206c64a2726269413a395ab4c5c7230553f53f3fa44013529",
+      "bytes": 401
+    },
+    {
+      "file": "attempt1_actions.ndjson",
+      "evidence": "evidence/testrun_13_30_initial.evidence",
+      "inner_path": "tests/17-persona-visa-ashby-strict-12ccb310/logs/1-actions.ndjson",
+      "result_status": "failed",
+      "pack_status": "finalized",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "sha256": "db89e218a70af009bd83f4cc12b03cd51a27d1804c713984b464f0eb9a3b345a",
+      "bytes": 10021
+    },
+    {
+      "file": "attempt2_console.ndjson",
+      "evidence": "evidence/17_persona_visa_ashby_strict_passed.evidence",
+      "inner_path": "tests/17-persona-visa-ashby-strict-12ccb310/logs/0-console.ndjson",
+      "result_status": "passed",
+      "pack_status": "finalized",
+      "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+      "sha256": "4a85c1490c4b635335e62bb7b349751160d17200a4028a723e8491471fbc79b1",
+      "bytes": 590
+    }
+  ]
+}

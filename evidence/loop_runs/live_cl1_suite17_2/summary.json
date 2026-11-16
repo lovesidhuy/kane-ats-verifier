@@ -1,0 +1,42 @@
+{
+  "mode": "live",
+  "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+  "run_id": "live_cl1_suite17_2",
+  "fill": {
+    "http_status": 200,
+    "persona": "visa_sponsorship",
+    "target": "http://127.0.0.1/api/resolve-fields",
+    "answer_count": 1
+  },
+  "command": [
+    "kane-cli",
+    "testmd",
+    "run",
+    "tests/kane/17_persona_visa_ashby_strict_test.md",
+    "--agent",
+    "--headless",
+    "--timeout",
+    "180",
+    "--username",
+    "lovesidhuy",
+    "--access-key",
+    "LT_g8dq1yr3trJuAGjbp8ZKRq8EzfYXoXizvcrHsAM85nIdKrc"
+  ],
+  "passed": false,
+  "stopped": "kane_lock_denied",
+  "credits": 0.0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "overall_status": "failed",
+      "result_status": "failed",
+      "diagnosis": "kane_lock_denied",
+      "pack_status": null,
+      "credits": 0.0,
+      "stop_reason": "kane_lock_denied"
+    }
+  ],
+  "balance_before": 8109.0288,
+  "balance_after": 8109.0288
+}

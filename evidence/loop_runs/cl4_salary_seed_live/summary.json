@@ -1,0 +1,89 @@
+{
+  "mode": "live",
+  "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+  "run_id": "cl4_salary_seed_live",
+  "fill": {
+    "http_status": 200,
+    "persona": "visa_sponsorship",
+    "target": "http://127.0.0.1/api/resolve-fields",
+    "answer_count": 1
+  },
+  "seed_bug": "salary_wrong_answer",
+  "seed_bug_label": "deliberately_planted",
+  "command": [
+    "kane-cli",
+    "testmd",
+    "run",
+    "tests/kane/17_persona_visa_ashby_strict_test.md",
+    "--agent",
+    "--headless",
+    "--timeout",
+    "180"
+  ],
+  "passed": true,
+  "stopped": null,
+  "credits": 42.484699999999975,
+  "attempts": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "overall_status": "failed",
+      "seed_bug_active": "salary_wrong_answer",
+      "agent_policy": {},
+      "result_status": "failed",
+      "diagnosis": null,
+      "pack_status": null,
+      "credits": 0.0,
+      "agent_fill": {
+        "http_status": 200,
+        "sponsorship": "Yes"
+      },
+      "fixplan": {
+        "fingerprint": "867d3a927ba3f62e",
+        "source": "seed_bug_salary",
+        "items": [
+          {
+            "kind": "policy_override",
+            "target": "salary_expectation",
+            "value": "160000",
+            "rationale": "Kane caught salary_wrong_answer; agent applies policy_override while seed stays planted"
+          }
+        ]
+      },
+      "fix": "agent_policy_override_applied",
+      "diff": {
+        "steps": [
+          {
+            "action": "agent_policy_override_applied",
+            "target": "salary_expectation",
+            "value": "160000",
+            "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+            "kane_failure": null,
+            "policy": {
+              "source": "kane_loop_agent_fix",
+              "updated_utc": "2026-11-14T05:12:01.335205+00:00",
+              "fields": {
+                "salary_expectation": "160000"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "attempt": 2,
+      "passed": true,
+      "overall_status": "passed",
+      "seed_bug_active": "salary_wrong_answer",
+      "agent_policy": {
+        "salary_expectation": "160000"
+      },
+      "result_status": "passed",
+      "diagnosis": null,
+      "pack_status": null,
+      "credits": 0.0
+    }
+  ],
+  "balance_before": 7636.4262,
+  "balance_after": 7593.9415
+}

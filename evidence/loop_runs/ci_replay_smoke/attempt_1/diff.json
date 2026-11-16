@@ -1,0 +1,9 @@
+{
+  "steps": [
+    {
+      "action": "policy_override_applied",
+      "target": "api_resolve_fields",
+      "value": "retry_after_harness_ok"
+    }
+  ]
+}

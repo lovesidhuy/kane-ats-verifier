@@ -1,0 +1,7 @@
+{
+  "suite": "tests/kane/50_explore_harness_home_test.md",
+  "overall_status": "passed",
+  "balance_before": 7593.9415,
+  "balance_after": 7561.5621,
+  "credits": 32.3794
+}

@@ -1,0 +1,48 @@
+{
+  "mode": "replay",
+  "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+  "run_id": "ci_replay_smoke",
+  "passed": true,
+  "stopped": null,
+  "credits": 0.0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "result_status": "failed",
+      "diagnosis": "resolve_fields_http_500",
+      "pack_status": "finalized",
+      "credits": 0.0,
+      "fixplan": {
+        "fingerprint": "71b3ac24bd835e2c",
+        "source": "kane_loop",
+        "items": [
+          {
+            "kind": "policy_override",
+            "target": "api_resolve_fields",
+            "value": "retry_after_harness_ok",
+            "rationale": "Harness already patched; policy path for residual API errors"
+          }
+        ]
+      },
+      "fix": "policy_override_applied",
+      "diff": {
+        "steps": [
+          {
+            "action": "policy_override_applied",
+            "target": "api_resolve_fields",
+            "value": "retry_after_harness_ok"
+          }
+        ]
+      }
+    },
+    {
+      "attempt": 2,
+      "passed": true,
+      "result_status": "passed",
+      "diagnosis": null,
+      "pack_status": "finalized",
+      "credits": 0.0
+    }
+  ]
+}
