@@ -2,18 +2,18 @@
   "hackathon": "Kane CLI Online Hackathon",
   "repo_note": "Clean standalone hackathon artifact (initialized Nov 15, 2026)",
   "suites_indexed": 54,
-  "trajectories_total_claimed": 183,
+  "trajectories_total_claimed": 190,
   "trajectories_sample_committed": 50,
   "loop_runs_recorded": 22,
   "cl2_run_id": "cl2_visa_seed_live",
   "cl2_passed": true,
   "demo_run_id": "judge_demo",
-  "sealed_packs_committed": 25,
+  "sealed_packs_committed": 37,
   "hackathon_pytest_count": 29,
   "replay_command": "./scripts/run_kane_verify.sh demo",
   "credits": {
-    "ledger_rows_sum": 541.4955,
-    "ledger_balance_delta": 1164.2357,
+    "ledger_rows_sum": 1119.3071,
+    "ledger_balance_delta": 1742.0473,
     "footnote": "ledger.csv totals recorded live Kane CLI loop runs across the hackathon sprint."
   }
 }

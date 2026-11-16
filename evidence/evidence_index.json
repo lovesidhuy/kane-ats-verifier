@@ -263,79 +263,79 @@
     {
       "suite": "tests/kane/37_security_analyst_lever_test.md",
       "url": "http://127.0.0.1:8766/ats/lever?persona=security_analyst&variant=mutated_ids",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "37_security_analyst_lever_passed.evidence",
+      "status": "failed",
+      "source": "37_security_analyst_lever_passed.evidence"
     },
     {
       "suite": "tests/kane/38_data_engineer_greenhouse_test.md",
       "url": "http://127.0.0.1:8766/ats/greenhouse?persona=data_engineer&variant=strict_policy_screening",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "38_data_engineer_greenhouse_passed.evidence",
+      "status": "failed",
+      "source": "38_data_engineer_greenhouse_passed.evidence"
     },
     {
       "suite": "tests/kane/39_product_manager_indeed_test.md",
       "url": "http://127.0.0.1:8766/ats/indeed?persona=product_manager&variant=mutated_ids",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "39_product_manager_indeed_passed.evidence",
+      "status": "failed",
+      "source": "39_product_manager_indeed_passed.evidence"
     },
     {
       "suite": "tests/kane/40_qa_automation_workopolis_test.md",
       "url": "http://127.0.0.1:8766/ats/workopolis?persona=qa_automation&variant=strict_policy_screening",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "40_qa_automation_workopolis_passed.evidence",
+      "status": "failed",
+      "source": "40_qa_automation_workopolis_passed.evidence"
     },
     {
       "suite": "tests/kane/41_international_coop_ashby_test.md",
       "url": "http://127.0.0.1:8766/ats/ashby?persona=international_coop&variant=mutated_ids",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "41_international_coop_ashby_passed.evidence",
+      "status": "failed",
+      "source": "41_international_coop_ashby_passed.evidence"
     },
     {
       "suite": "tests/kane/42_security_analyst_bamboohr_test.md",
       "url": "http://127.0.0.1:8766/ats/bamboohr?persona=security_analyst&variant=standard",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "42_security_analyst_bamboohr_passed.evidence",
+      "status": "failed",
+      "source": "42_security_analyst_bamboohr_passed.evidence"
     },
     {
       "suite": "tests/kane/43_data_engineer_linkedin_test.md",
       "url": "http://127.0.0.1:8766/ats/linkedin?persona=data_engineer&variant=standard",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "43_data_engineer_linkedin_passed.evidence",
+      "status": "failed",
+      "source": "43_data_engineer_linkedin_passed.evidence"
     },
     {
       "suite": "tests/kane/44_product_manager_greenhouse_test.md",
       "url": "http://127.0.0.1:8766/ats/greenhouse?persona=product_manager&variant=mutated_ids",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "44_product_manager_greenhouse_passed.evidence",
+      "status": "failed",
+      "source": "44_product_manager_greenhouse_passed.evidence"
     },
     {
       "suite": "tests/kane/45_qa_automation_lever_test.md",
       "url": "http://127.0.0.1:8766/ats/lever?persona=qa_automation&variant=standard",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "45_qa_automation_lever_passed.evidence",
+      "status": "failed",
+      "source": "45_qa_automation_lever_passed.evidence"
     },
     {
       "suite": "tests/kane/46_international_coop_indeed_test.md",
       "url": "http://127.0.0.1:8766/ats/indeed?persona=international_coop&variant=strict_policy_screening",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "46_international_coop_indeed_passed.evidence",
+      "status": "failed",
+      "source": "46_international_coop_indeed_passed.evidence"
     },
     {
       "suite": "tests/kane/47_devops_workopolis_test.md",
       "url": "http://127.0.0.1:8766/ats/workopolis?persona=devops_contractor&variant=standard",
       "pack_in_repo": "testrun_36_47.evidence",
       "status": "failed",
-      "source": "testrun_36_47.evidence"
+      "source": "47_devops_workopolis_passed.evidence"
     },
     {
       "suite": "tests/kane/48_dirty_dedup_batch_test.md",
@@ -1022,7 +1022,7 @@
                 "kane_failure": null,
                 "policy": {
                   "source": "kane_loop_agent_fix",
-                  "updated_utc": "2026-11-16T06:02:43.283289+00:00",
+                  "updated_utc": "2026-11-16T06:34:29.437225+00:00",
                   "fields": {
                     "api_resolve_fields": "retry_after_harness_ok"
                   }
@@ -1288,5 +1288,5 @@
       "credits": 32.7538
     }
   },
-  "sealed_packs_committed": 25
+  "sealed_packs_committed": 37
 }

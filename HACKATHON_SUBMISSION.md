@@ -10,10 +10,10 @@
 |-------|-----------|
 | **54** Kane `.testmd` suites indexed | `evidence/evidence_index.json` |
 | **29** standalone pytest tests (engine, loop, guard, mutation, K-16 API) | `.github/workflows/test.yml` / `demo` |
-| **25** sealed `.evidence` packs in repo | `evidence/*.evidence` |
-| **183** verified trajectories (**50** public sample) | `evidence/dataset_manifest.json`, `evidence/verified_trajectories_sample_50.jsonl` |
+| **37** sealed `.evidence` packs in repo | `evidence/*.evidence` |
+| **190** verified trajectories (**50** public sample) | `evidence/dataset_manifest.json`, `evidence/verified_trajectories_sample_50.jsonl` |
 | **22** live/replay loop runs recorded | `evidence/loop_runs/*/summary.json` |
-| Credits **541.5** ledger Σ / **1164.24** balance Δ | `evidence/credits_ledger.csv` |
+| Credits **1119.31** ledger Σ / **1742.05** balance Δ | `evidence/credits_ledger.csv` |
 
 ## 1. Ships (25%)
 

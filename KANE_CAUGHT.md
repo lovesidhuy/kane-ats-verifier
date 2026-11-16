@@ -20,8 +20,9 @@ Pass/fail is from `test_md_done.overall_status` / pack `result.yaml`, not `evide
 | K-14 | Explore lease without assertions | 0 pass/fail checks | explore summary | mutation unit tests | `tests/test_mutation_check.py` |
 | K-15 | Agent repeated same fixplan | stopped repeated | loop before agent override | agent policy file | CL-2 honest rerun |
 | **K-16** | **Dedupe POST 415** (`runDedupe` no Content-Type) | `test_md_done` **failed** (live) | `v1_explore_53_live`, `v1_explore_53_live_b` NDJSON | **fixed & verified passed live** (`53_explore_discovery_dedupe_passed.evidence`) | `53_explore_discovery_dedupe_test.md`, `tests/test_discovery_dedupe_api.py` |
+| **K-17** | **Network Guard Spec Text Mismatch** | Kane verdict `automation_bug/config_issue` (conf 0.90) | `suite_36_guard_triage_fail` | Spec aligned to `P0-3 network no-submit guard probe` | `36_network_no_submit_guard_test.md` (passed live) |
 
-## Live re-recordings (Sprint 2)
+## Live re-recordings (Sprint 2 & 3)
 
 | Run ID | Suite | `test_md_done` | Credits (balance Δ) |
 |--------|-------|----------------|---------------------|
@@ -39,6 +40,18 @@ Pass/fail is from `test_md_done.overall_status` / pack `result.yaml`, not `evide
 | `cl4_email_seed_live_v2` | `01_*` + `email_wrong_answer` | att1 **failed** / att2 **passed** | ~90.4 |
 | `53_explore_discovery_dedupe` | `53_explore_discovery_dedupe_test.md` | **passed** (K-16 confirmed) | ~14.7 |
 | `48_dirty_dedup_batch` | `48_dirty_dedup_batch_test.md` | **passed** (dirty dedupe) | ~15.0 |
+| `suite_42_security_bamboohr` | `42_security_analyst_bamboohr_test.md` | **passed** (sealed pack) | ~20.8 |
+| `suite_43_data_eng_linkedin` | `43_data_engineer_linkedin_test.md` | **passed** (sealed pack) | ~20.4 |
+| `suite_44_pm_greenhouse` | `44_product_manager_greenhouse_test.md` | **passed** (sealed pack) | ~18.8 |
+| `suite_45_qa_lever` | `45_qa_automation_lever_test.md` | **passed** (sealed pack) | ~20.4 |
+| `suite_46_coop_indeed` | `46_international_coop_indeed_test.md` | **passed** (sealed pack) | ~19.1 |
+| `suite_47_devops_workopolis` | `47_devops_workopolis_test.md` | **passed** (sealed pack) | ~20.7 |
+| `suite_37_security_lever` | `37_security_analyst_lever_test.md` | **passed** (sealed pack) | ~18.8 |
+| `suite_38_data_eng_greenhouse` | `38_data_engineer_greenhouse_test.md` | **passed** (sealed pack) | ~19.4 |
+| `suite_39_pm_indeed` | `39_product_manager_indeed_test.md` | **passed** (sealed pack) | ~15.8 |
+| `suite_40_qa_workopolis` | `40_qa_automation_workopolis_test.md` | **passed** (sealed pack) | ~20.1 |
+| `suite_41_coop_ashby` | `41_international_coop_ashby_test.md` | **passed** (sealed pack) | ~21.4 |
+| `suite_36_guard_healed_pass` | `36_network_no_submit_guard_test.md` | **passed** (K-17 self-healed) | ~11.2 |
 
 **V-3 mutations (fail → revert → pass):** guard-off **failed** `p0_3_suite36_broken_fail`; guard-on **passed** `p0_3_suite36_pass`; planted seed loops **failed** then agent policy **passed** (`cl2_visa_seed_live`, `cl4_email_seed_live`, `cl4_salary_seed_live`, `cl2_visa_seed_live_v2`, `cl4_salary_seed_live_v2`, `cl4_email_seed_live_v2`).
 

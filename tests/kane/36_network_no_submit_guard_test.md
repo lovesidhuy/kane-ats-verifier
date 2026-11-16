@@ -10,7 +10,7 @@ max_steps: 15
 
 ## Step 1: Open guard probe page
 Navigate to http://127.0.0.1:8766/tools/network-guard-test.
-Assert that "network-guard" is visible in the page source or "Network Submit Guard Probe" is visible.
+Assert that "P0-3 network no-submit guard probe" is visible.
 
 ## Step 2: Trigger synthetic external POST
 Click the button "Probe external application POST".
