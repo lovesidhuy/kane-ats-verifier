@@ -18,11 +18,11 @@
   },
   "breakdown_by_ats_platform": {
     "greenhouse": 46,
-    "bamboohr": 5,
-    "linkedin": 24,
     "lever": 8,
     "ashby": 6,
+    "bamboohr": 5,
     "indeed": 5,
+    "linkedin": 24,
     "workopolis": 5,
     "qa_bank": 16,
     "unknown": 1,

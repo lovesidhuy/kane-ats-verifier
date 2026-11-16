@@ -11,16 +11,16 @@
     {
       "suite": "tests/kane/02_lever_autofill_test.md",
       "url": "http://127.0.0.1:8766/ats/lever",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "02_lever_passed.evidence",
+      "status": "failed",
+      "source": "02_lever_passed.evidence"
     },
     {
       "suite": "tests/kane/03_ashby_autofill_test.md",
       "url": "http://127.0.0.1:8766/ats/ashby",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "03_ashby_passed.evidence",
+      "status": "failed",
+      "source": "03_ashby_passed.evidence"
     },
     {
       "suite": "tests/kane/04_bamboohr_autofill_test.md",
@@ -32,9 +32,9 @@
     {
       "suite": "tests/kane/05_indeed_smartapply_test.md",
       "url": "http://127.0.0.1:8766/ats/indeed",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "05_indeed_passed.evidence",
+      "status": "failed",
+      "source": "05_indeed_passed.evidence"
     },
     {
       "suite": "tests/kane/06_linkedin_easy_apply_test.md",
@@ -46,9 +46,9 @@
     {
       "suite": "tests/kane/07_workopolis_jobbank_test.md",
       "url": "http://127.0.0.1:8766/ats/workopolis",
-      "pack_in_repo": null,
-      "status": "not_run",
-      "source": null
+      "pack_in_repo": "07_workopolis_passed.evidence",
+      "status": "failed",
+      "source": "07_workopolis_passed.evidence"
     },
     {
       "suite": "tests/kane/08_qa_bank_resolution_test.md",
@@ -1022,7 +1022,7 @@
                 "kane_failure": null,
                 "policy": {
                   "source": "kane_loop_agent_fix",
-                  "updated_utc": "2026-11-16T06:34:29.437225+00:00",
+                  "updated_utc": "2026-11-16T06:51:25.398887+00:00",
                   "fields": {
                     "api_resolve_fields": "retry_after_harness_ok"
                   }
@@ -1288,5 +1288,5 @@
       "credits": 32.7538
     }
   },
-  "sealed_packs_committed": 37
+  "sealed_packs_committed": 41
 }

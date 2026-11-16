@@ -8,7 +8,7 @@
   "cl2_run_id": "cl2_visa_seed_live",
   "cl2_passed": true,
   "demo_run_id": "judge_demo",
-  "sealed_packs_committed": 37,
+  "sealed_packs_committed": 41,
   "hackathon_pytest_count": 29,
   "replay_command": "./scripts/run_kane_verify.sh demo",
   "credits": {

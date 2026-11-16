@@ -8,7 +8,7 @@
       "kane_failure": null,
       "policy": {
         "source": "kane_loop_agent_fix",
-        "updated_utc": "2026-11-16T06:34:29.437225+00:00",
+        "updated_utc": "2026-11-16T06:51:25.398887+00:00",
         "fields": {
           "api_resolve_fields": "retry_after_harness_ok"
         }
