@@ -1,0 +1,62 @@
+{
+  "mode": "replay",
+  "suite": "tests/kane/17_persona_visa_ashby_strict_test.md",
+  "run_id": "demo_video_recut_replay",
+  "passed": true,
+  "stopped": null,
+  "credits": 0.0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "passed": false,
+      "result_status": "failed",
+      "diagnosis": "resolve_fields_http_500",
+      "pack_status": "finalized",
+      "credits": 0.0,
+      "fixplan": {
+        "fingerprint": "71b3ac24bd835e2c",
+        "source": "kane_loop",
+        "items": [
+          {
+            "kind": "policy_override",
+            "target": "api_resolve_fields",
+            "value": "retry_after_harness_ok",
+            "rationale": "Harness already patched; policy path for residual API errors"
+          }
+        ]
+      },
+      "fix": "agent_policy_override_applied",
+      "diff": {
+        "steps": [
+          {
+            "action": "agent_policy_override_applied",
+            "target": "api_resolve_fields",
+            "value": "retry_after_harness_ok",
+            "agent_policy_file": "tests/kane/.loop_agent_policy.json",
+            "kane_failure": null,
+            "policy": {
+              "source": "kane_loop_agent_fix",
+              "updated_utc": "2026-11-17T00:58:27.610347+00:00",
+              "rules": {
+                "fallback_strategy": "aria_label_or_for_attribute",
+                "regex_id_ignore": "^fld_[0-9a-z]+$",
+                "label_proximity_matching": true
+              },
+              "fields": {
+                "api_resolve_fields": "retry_after_harness_ok"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "attempt": 2,
+      "passed": true,
+      "result_status": "passed",
+      "diagnosis": null,
+      "pack_status": "finalized",
+      "credits": 0.0
+    }
+  ]
+}

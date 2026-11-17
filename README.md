@@ -22,7 +22,7 @@ This repository is a clean, standalone verification system:
 - `tests/kane/harness.py` — local multi-ATS & multi-persona verification server (`127.0.0.1:8766`, dry-run + network no-submit guard).
 - `scripts/kane_loop.py` — closed-loop runner: executes Kane CLI, parses NDJSON + `failure.yaml`, emits a `FixPlan`, writes `tests/kane/.loop_agent_policy.json`, and retries until Kane passes.
 - `tests/` — **35** pytest unit/integration tests and **54** indexed `.testmd` suites.
-- `evidence/` — **45** sealed `.evidence` packs, **23** recorded loop runs, and **190** reward-filtered trajectories (**50** public sample).
+- `evidence/` — **45** sealed `.evidence` packs, **24** recorded loop runs, and **190** reward-filtered trajectories (**50** public sample).
 - Credits recorded in `evidence/credits_ledger.csv`: **1119.31** ledger sum (**1742.05** balance delta).
 
 ## Unified CLI & 0-credit demo (< 1.5 seconds)

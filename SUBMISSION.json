@@ -4,7 +4,7 @@
   "suites_indexed": 54,
   "trajectories_total_claimed": 190,
   "trajectories_sample_committed": 50,
-  "loop_runs_recorded": 23,
+  "loop_runs_recorded": 24,
   "cl2_run_id": "cl2_visa_seed_live",
   "cl2_passed": true,
   "demo_run_id": "judge_demo",

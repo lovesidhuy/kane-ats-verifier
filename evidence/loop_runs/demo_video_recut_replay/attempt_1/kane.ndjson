@@ -1,0 +1,3 @@
+{"marker": "step", "step": "1-1", "ordinal": 4}
+{"sequence": 0, "level": "error", "text": "Failed to load resource: the server responded with a status of 500 (INTERNAL SERVER ERROR)", "url": "http://127.0.0.1:8766/api/resolve-fields", "line": 0, "step": "1-1"}
+{"sequence": 1, "level": "error", "text": "Unexpected token '<', \"<!doctype \"... is not valid JSON", "url": "", "line": 0, "step": "1-1"}
