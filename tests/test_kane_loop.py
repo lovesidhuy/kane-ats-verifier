@@ -174,6 +174,7 @@ def test_live_mode_stops_when_kane_cli_is_not_logged_in(capsys, monkeypatch):
 
 def test_live_loop_retries_after_the_recorded_failure(tmp_path, monkeypatch):
     monkeypatch.setenv("KANE_CLI", "kane-cli")
+    monkeypatch.setattr(kane_loop, "ensure_local_harness", lambda: None)
     outputs = [
         subprocess.CompletedProcess(
             args=[],
@@ -254,7 +255,7 @@ def test_seed_bug_visa_wrong_answer_plants_no_sponsorship():
 
 
 def test_save_evidence_writes_loop_run_tree(tmp_path, monkeypatch):
-    monkeypatch.setattr(kane_loop, "LOOP_RUNS_DIR", tmp_path / "loop_runs")
+    monkeypatch.setattr(kane_loop, "LOCAL_RUNS_DIR", tmp_path / "loop_runs")
     run_id = "testrun_save"
     assert kane_loop.main(["--replay", "--save-evidence", "--run-id", run_id]) == 0
     attempt1 = tmp_path / "loop_runs" / run_id / "attempt_1"

@@ -18,13 +18,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Run unit tests
+      - name: Demo, tests and real claims gate (read-only official evidence)
+        run: ./kane-ats demo
+      - name: Repeated judge runs leave a clean checkout
         run: |
-          PYTHONPATH=. pytest tests/ -v
-      - name: Claims and evidence index
-        run: |
-          python3 scripts/evidence_index.py
+          find evidence/loop_runs -type d | sort > /tmp/official-dirs-before.txt
+          for iteration in 1 2; do
+            ./kane-ats heal > /tmp/heal-$iteration.log 2>&1
+            ./scripts/run_kane_verify.sh loop > /tmp/loop-$iteration.log 2>&1
+          done
           python3 scripts/check_claims.py
-      - name: Closed-loop replay (0 credits)
-        run: |
-          python3 scripts/kane_loop.py --replay --save-evidence --run-id ci_replay
+          find evidence/loop_runs -type d | sort > /tmp/official-dirs-after.txt
+          diff /tmp/official-dirs-before.txt /tmp/official-dirs-after.txt
+          git diff --exit-code
+          test -z "$(git status --porcelain)"

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import os
@@ -13,6 +14,8 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+from ats_verifier.official_runs import load_official_runs
 
 DOC_FILES = [
     REPO_ROOT / "README.md",
@@ -51,7 +54,7 @@ def _collect_pytest_count() -> int:
     for cmd in candidates:
         if not shutil.which(cmd[0]) and not Path(cmd[0]).exists():
             continue
-        env = {**os.environ, "PYTHONPATH": str(REPO_ROOT)}
+        env = {**os.environ, "PYTHONPATH": str(REPO_ROOT), "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"}
         proc = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True, env=env)
         if proc.returncode == 0:
             m = re.search(r"(\d+) tests?", proc.stdout)
@@ -103,7 +106,11 @@ def _doc_scan(sub: dict) -> list[str]:
     return errors
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--write-submission", action="store_true",
+                        help="Explicit maintenance: update SUBMISSION.json after curating official evidence")
+    args = parser.parse_args(argv)
     manifest_path = REPO_ROOT / "evidence" / "dataset_manifest.json"
     index_path = REPO_ROOT / "evidence" / "evidence_index.json"
     submission_path = REPO_ROOT / "SUBMISSION.json"
@@ -114,6 +121,14 @@ def main() -> int:
 
     if not index_path.is_file():
         errors.append("missing evidence/evidence_index.json — run scripts/evidence_index.py")
+
+    try:
+        official_manifest, official_runs = load_official_runs(REPO_ROOT)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        print(json.dumps({"ok": False, "errors": [f"official run manifest: {exc}"]}, indent=2))
+        return 1
+    if (index.get("loop_runs") or {}) != official_runs:
+        errors.append("evidence index does not match official run manifest; regenerate it explicitly")
 
     ledger_sum, ledger_delta = _credits_from_ledger()
     pytest_cnt = _collect_pytest_count()
@@ -126,7 +141,7 @@ def main() -> int:
         "suites_indexed": index.get("suite_count"),
         "trajectories_total_claimed": manifest.get("total_verified_trajectories"),
         "trajectories_sample_committed": manifest.get("public_sample_count"),
-        "loop_runs_recorded": len(index.get("loop_runs") or {}),
+        "loop_runs_recorded": len(official_manifest["runs"]),
         "cl2_run_id": "cl2_visa_seed_live",
         "cl2_passed": (index.get("loop_runs") or {}).get("cl2_visa_seed_live", {}).get("passed"),
         "demo_run_id": "judge_demo",
@@ -142,7 +157,10 @@ def main() -> int:
             ),
         },
     }
-    submission_path.write_text(json.dumps(submission, indent=2) + "\n", encoding="utf-8")
+    if args.write_submission:
+        submission_path.write_text(json.dumps(submission, indent=2) + "\n", encoding="utf-8")
+    elif not submission_path.is_file() or json.loads(submission_path.read_text(encoding="utf-8")) != submission:
+        errors.append("SUBMISSION.json is stale; review changes then run check_claims.py --write-submission")
 
     if manifest.get("public_sample_count") is not None and int(manifest["public_sample_count"]) != 50:
         errors.append(f"sample trajectory count expected 50, got {manifest['public_sample_count']}")

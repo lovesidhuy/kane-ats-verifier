@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import zipfile
 from pathlib import Path
 
@@ -14,6 +15,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SUITE_DIR = REPO_ROOT / "tests" / "kane"
 LOOP_DIR = REPO_ROOT / "evidence" / "loop_runs"
 EVIDENCE_DIR = REPO_ROOT / "evidence"
+sys.path.insert(0, str(REPO_ROOT))
+from ats_verifier.official_runs import load_official_runs
 
 
 def _overall_from_ndjson(path: Path) -> str | None:
@@ -64,7 +67,9 @@ def build_index() -> dict:
         if url_match:
             suite_status[rel]["url"] = url_match.group(1).strip()
 
-    for run_dir in sorted(LOOP_DIR.iterdir()) if LOOP_DIR.is_dir() else []:
+    _manifest, loop_runs = load_official_runs(REPO_ROOT)
+    for run_id in sorted(loop_runs):
+        run_dir = LOOP_DIR / run_id
         summary = run_dir / "summary.json"
         ndjson = run_dir / "kane.ndjson"
         attempt1 = run_dir / "attempt_1" / "kane.ndjson"
@@ -101,14 +106,6 @@ def build_index() -> dict:
                     suite_status[rel]["status"] = st
                     suite_status[rel]["source"] = pack.name
 
-    loop_runs = {}
-    if LOOP_DIR.is_dir():
-        for run_dir in sorted(LOOP_DIR.iterdir()):
-            sp = run_dir / "summary.json"
-            if not sp.is_file():
-                continue
-            summary = json.loads(sp.read_text(encoding="utf-8"))
-            loop_runs[run_dir.name] = summary
 
     return {
         "suite_count": len(suite_status),

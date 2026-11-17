@@ -39,6 +39,9 @@ SEED_BUG_FILE = REPO_ROOT / "tests" / "kane" / ".loop_seed_bug"
 AGENT_POLICY_FILE = REPO_ROOT / "tests" / "kane" / ".loop_agent_policy.json"
 DEFAULT_SUITE = Path("tests/kane/17_persona_visa_ashby_strict_test.md")
 LOOP_RUNS_DIR = REPO_ROOT / "evidence" / "loop_runs"
+LOCAL_RUNS_DIR = REPO_ROOT / "evidence" / "local_runs"
+sys.path.insert(0, str(REPO_ROOT))
+from ats_verifier.console import print
 CREDITS_LEDGER = REPO_ROOT / "evidence" / "credits_ledger.csv"
 MIN_CREDIT_BUDGET = 2.0
 DEFAULT_CREDIT_STOP = 100.0
@@ -917,10 +920,13 @@ def append_credits_ledger(
     balance_after: float | None,
     credits_recorded: float,
     note: str = "",
+    *,
+    ledger_path: Path | None = None,
 ) -> None:
-    CREDITS_LEDGER.parent.mkdir(parents=True, exist_ok=True)
-    new_file = not CREDITS_LEDGER.exists()
-    with CREDITS_LEDGER.open("a", encoding="utf-8", newline="") as handle:
+    ledger_path = ledger_path or LOCAL_RUNS_DIR / "credits_ledger.csv"
+    ledger_path.parent.mkdir(parents=True, exist_ok=True)
+    new_file = not ledger_path.exists()
+    with ledger_path.open("a", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
         if new_file:
             writer.writerow(
@@ -976,6 +982,7 @@ def save_attempt_artifacts(
 
 
 def write_summary(run_dir: Path, payload: dict[str, Any]) -> None:
+    run_dir.mkdir(parents=True, exist_ok=True)
     (run_dir / "summary.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
@@ -1040,9 +1047,10 @@ def run_live_loop(
     credit_stop: float = DEFAULT_CREDIT_STOP,
     run_id: str | None = None,
     save_artifacts: bool = False,
+    output_dir: Path | None = None,
 ) -> LoopResult:
     rid = run_id or uuid.uuid4().hex[:12]
-    run_dir = LOOP_RUNS_DIR / rid
+    run_dir = output_dir or LOCAL_RUNS_DIR / rid
     command = kane_testmd_command(suite, kane_binary())
     source = harness_source
     log: list[dict[str, Any]] = []
@@ -1201,12 +1209,14 @@ def main(argv: list[str] | None = None) -> int:
         help=f"Refuse to start if below {MIN_CREDIT_BUDGET}; also caps recorded credits per run",
     )
     parser.add_argument("--max-attempts", type=int, default=5, help="Maximum Kane attempts per run")
-    parser.add_argument("--run-id", default=None, help="Loop run id for evidence/loop_runs/")
+    parser.add_argument("--run-id", default=None, help="Descriptive run id (defaults to a unique local id)")
     parser.add_argument(
         "--save-evidence",
         action="store_true",
-        help="Write evidence/loop_runs/<run_id>/attempt_n/ artifacts",
+        help="Save attempt artifacts (local by default; use with --official to archive)",
     )
+    parser.add_argument("--official", action="store_true",
+                        help="Archive under evidence/loop_runs; requires --save-evidence and a new --run-id")
     parser.add_argument(
         "--seed-bug",
         default=None,
@@ -1218,6 +1228,13 @@ def main(argv: list[str] | None = None) -> int:
         help="Emit only the final summary JSON object on stdout (default output is already JSON)",
     )
     args = parser.parse_args(argv)
+    if args.official and (not args.save_evidence or not args.run_id):
+        parser.error("--official requires --save-evidence and a descriptive --run-id")
+    if args.run_id and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,127}", args.run_id):
+        parser.error("--run-id must contain only letters, digits, underscores and hyphens")
+    # Every ordinary run retains local diagnostics; only explicit archiving may
+    # write official evidence. Manifest inclusion remains a separate review step.
+    args.save_evidence = True
 
     if args.credit_budget is not None and args.credit_budget < MIN_CREDIT_BUDGET:
         print(
@@ -1239,7 +1256,9 @@ def main(argv: list[str] | None = None) -> int:
         args.replay = True
 
     run_id = args.run_id or uuid.uuid4().hex[:12]
-    run_dir = LOOP_RUNS_DIR / run_id
+    run_dir = (LOOP_RUNS_DIR if args.official else LOCAL_RUNS_DIR) / run_id
+    if args.official and run_dir.exists():
+        parser.error(f"official run already exists: {run_id}; choose a new --run-id")
     payload: dict[str, Any] = {
         "mode": "live" if live else "replay",
         "suite": args.suite,
@@ -1314,6 +1333,7 @@ def _main_body(
             credit_stop=credit_stop,
             run_id=run_id,
             save_artifacts=args.save_evidence,
+            output_dir=run_dir,
         )
         balance_after = read_balance()
         recorded = result.credits
@@ -1327,6 +1347,7 @@ def _main_body(
             balance_after,
             recorded,
             note=str(result.stopped or ""),
+            ledger_path=CREDITS_LEDGER if args.official else LOCAL_RUNS_DIR / "credits_ledger.csv",
         )
         payload["command"] = redact_kane_command(kane_testmd_command(Path(args.suite)))
         payload["passed"] = result.passed

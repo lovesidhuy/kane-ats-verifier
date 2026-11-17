@@ -18,6 +18,9 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import time
+
+from ats_verifier.console import print
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -32,32 +35,37 @@ def _run_py(cmd_args: list[str], *, env: dict[str, str] | None = None) -> int:
 
 
 def cmd_demo(args: argparse.Namespace) -> int:
+    started = time.perf_counter()
     print("\n" + "=" * 68)
     print("  \033[1;36m🎯 Kane ATS Verifier — 0-Credit Verification Demo Replay\033[0m")
     print("=" * 68)
     print("  \033[1m1. Executing unit test suite (pytest)...\033[0m")
-    ret_test = _run_py(["-m", "pytest", "tests/", "-q"], env={"FORM_ANSWERS_DISABLE_AI": "1"})
+    ret_test = _run_py(["-m", "pytest", "tests/", "-q"], env={"FORM_ANSWERS_DISABLE_AI": "1", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"})
     if ret_test != 0:
         print("\033[31mFAIL: pytest suite failed\033[0m")
         return ret_test
 
     print("\n  \033[1m2. Replaying closed-loop failure -> agent repair -> green pass...\033[0m")
     ret_loop = _run_py(
-        ["scripts/kane_loop.py", "--replay", "--save-evidence", "--run-id", "judge_demo"],
+        ["scripts/kane_loop.py", "--replay", "--save-evidence", "--run-id", getattr(args, "run_id", None) or "judge_demo"]
+        + (["--official"] if args.official else []),
         env={"FORM_ANSWERS_DISABLE_AI": "1", "KANE_LOOP_DETERMINISTIC": "1"}
     )
     if ret_loop != 0:
         print("\033[31mFAIL: closed loop replay failed\033[0m")
         return ret_loop
 
-    _run_py(["scripts/evidence_index.py"])
-    _run_py(["scripts/check_claims.py"])
+    ret_claims = _run_py(["scripts/check_claims.py"])
+    if ret_claims != 0:
+        print("  Claims Gate Check        : FAIL (scripts/check_claims.py)")
+        print(f"  DEMO FAILED after {time.perf_counter() - started:.2f} seconds")
+        return ret_claims
 
     sub_file = REPO_ROOT / "SUBMISSION.json"
     if sub_file.is_file():
         sub = json.loads(sub_file.read_text(encoding="utf-8"))
         print("\n" + "═" * 68)
-        print("  \033[1;32m✓ 0-CREDIT DEMO PASSED IN < 1.5 SECONDS\033[0m")
+        print(f"  \033[1;32m✓ 0-CREDIT DEMO PASSED IN {time.perf_counter() - started:.2f} SECONDS\033[0m")
         print("═" * 68)
         pytest_count_val = sub.get("pytest_count", sub.get("hackathon_pytest_count", 35))
         print(f"  • Standalone Pytest Tests  : \033[1m{pytest_count_val}\033[0m passed")
@@ -82,6 +90,10 @@ def cmd_heal(args: argparse.Namespace) -> int:
     print("=" * 68)
 
     loop_args = ["scripts/kane_loop.py", "--suite", suite, "--seed-bug", seed, "--save-evidence"]
+    if args.official:
+        loop_args.extend(["--official", "--run-id", args.run_id or "heal_official"])
+    elif args.run_id:
+        loop_args.extend(["--run-id", args.run_id])
     if args.live:
         loop_args.append("--live")
     else:
@@ -235,13 +247,21 @@ def main() -> int:
     subparsers = parser.add_subparsers(dest="command", help="Command to execute")
 
     # demo
-    subparsers.add_parser("demo", help="Run 0-credit verification replay and unit tests")
+    demo_parser = subparsers.add_parser("demo", help="Run 0-credit verification replay and unit tests")
+    demo_parser.add_argument("--save-evidence", action="store_true", help="Save diagnostics (local by default)")
+    demo_parser.add_argument("--official", action="store_true", help="Explicitly archive the demo; requires --save-evidence")
+
+    demo_parser.add_argument("--run-id", help="New descriptive run id for official archiving")
 
     # heal
     heal_parser = subparsers.add_parser("heal", help="Run closed-loop agent repair with live policy diff")
     heal_parser.add_argument("--suite", help="Path to Kane .testmd suite (default: suite 17 Ashby)")
     heal_parser.add_argument("--seed", help="Planted seed bug name (default: visa_wrong_answer)")
     heal_parser.add_argument("--live", action="store_true", help="Run live against Kane CLI (requires login)")
+
+    heal_parser.add_argument("--save-evidence", action="store_true", help="Save diagnostics (local by default)")
+    heal_parser.add_argument("--official", action="store_true", help="Explicitly archive this run; requires --save-evidence --run-id")
+    heal_parser.add_argument("--run-id", help="Descriptive name for this run")
 
     # audit
     subparsers.add_parser("audit", help="Run claims check and audit all 45 sealed evidence packs")
@@ -258,6 +278,10 @@ def main() -> int:
     subparsers.add_parser("doctor", help="Check local environment dependencies and harness status")
 
     args = parser.parse_args()
+    if getattr(args, "official", False) and not getattr(args, "save_evidence", False):
+        parser.error("--official requires --save-evidence")
+    if args.command in {"demo", "heal"} and args.official and not args.run_id:
+        parser.error("official archiving requires a new --run-id")
     if not args.command:
         parser.print_help()
         return 0

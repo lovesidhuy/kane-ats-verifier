@@ -11,7 +11,7 @@ pick_python() {
   for cand in "${PYTHON_BIN:-}" python3 /opt/homebrew/bin/python3.14 /opt/homebrew/opt/python@3.14/bin/python3.14 python3.14 python3.12 python3.11; do
     [[ -n "$cand" ]] || continue
     if command -v "$cand" >/dev/null 2>&1; then
-      if "$cand" -c "import pytest, flask, yaml" 2>/dev/null; then
+      if "$cand" -c "import sys; assert sys.version_info >= (3, 10); import pytest, flask, yaml" 2>/dev/null; then
         echo "$cand"
         return 0
       fi
@@ -68,48 +68,13 @@ doctor() {
 }
 
 demo() {
-  echo "== Verification demo (0 credits, deterministic offline replay) =="
-  export FORM_ANSWERS_DISABLE_AI=1
-  export KANE_LOOP_DETERMINISTIC=1
-  PYTHONPATH=. "$PY_BIN" -m pytest tests/ -q
-  PYTHONPATH=. "$PY_BIN" scripts/kane_loop.py --replay --save-evidence --run-id judge_demo
-  PYTHONPATH=. "$PY_BIN" scripts/evidence_index.py >/dev/null
-  PYTHONPATH=. "$PY_BIN" scripts/check_claims.py >/dev/null
-  "$PY_BIN" - <<'PY'
-import json
-from pathlib import Path
-sub = json.loads(Path("SUBMISSION.json").read_text())
-summary = json.loads(Path("evidence/loop_runs/judge_demo/summary.json").read_text())
-print("")
-print("========== VERIFICATION DEMO SUMMARY (0 credits) ==========")
-pytest_count = sub.get('pytest_count', sub.get('hackathon_pytest_count', 35))
-print(f"Pytest passed: {pytest_count}")
-print(f"Suites indexed: {sub.get('suites_indexed')} | Loop runs recorded: {sub.get('loop_runs_recorded')} | Sealed packs in repo: {sub.get('sealed_packs_committed')}")
-print(f"Trajectories: {sub.get('trajectories_total_claimed')} total, {sub.get('trajectories_sample_committed')} public sample -> evidence/verified_trajectories_sample_50.jsonl")
-cr = sub.get("credits") or {}
-print(f"Credits (ledger sum): {cr.get('ledger_rows_sum')} | balance delta: {cr.get('ledger_balance_delta')}")
-passed = summary.get("passed") or summary.get("overall_status") == "passed"
-print(f"Closed-loop replay ({sub.get('demo_run_id')}): {'PASSED' if passed else 'see summary'} -> evidence/loop_runs/judge_demo/summary.json")
-print("Claims gate: python3 scripts/check_claims.py")
-print("====================================================")
-PY
+  PYTHONPATH=. "$PY_BIN" -m ats_verifier.cli demo "$@"
 }
 
 run_loop() {
   LIVE=0
-  ARGS=()
   for arg in "$@"; do
-    if [[ "$arg" == "--live" ]]; then
-      LIVE=1
-    else
-      ARGS+=("$arg")
-    fi
-  done
-  SUITE="tests/kane/17_persona_visa_ashby_strict_test.md"
-  for i in "${!ARGS[@]}"; do
-    if [[ "${ARGS[$i]}" == "--suite" && -n "${ARGS[$i+1]:-}" ]]; then
-      SUITE="${ARGS[$i+1]}"
-    fi
+    [[ "$arg" != "--live" ]] || LIVE=1
   done
   if [[ "$LIVE" -eq 1 ]]; then
     HARNESS_PID=""
@@ -127,10 +92,11 @@ run_loop() {
         sleep 1
       done
     fi
-    exec "$PY_BIN" scripts/kane_loop.py --live --fill --save-evidence --suite "$SUITE" "${ARGS[@]}"
+    "$PY_BIN" scripts/kane_loop.py --live --fill "$@"
+    return $?
   fi
   echo "CL-1 closed loop (replay, 0 credits)..."
-  exec "$PY_BIN" scripts/kane_loop.py --replay --save-evidence "${ARGS[@]}"
+  exec "$PY_BIN" scripts/kane_loop.py --replay "$@"
 }
 
 run_verify() {
@@ -156,7 +122,7 @@ CMD="${1:-demo}"
 case "$CMD" in
   -h|--help|help) usage ;;
   doctor) shift || true; doctor ;;
-  demo) shift || true; demo ;;
+  demo) shift || true; demo "$@" ;;
   loop) shift; run_loop "$@" ;;
   verify) shift || true; run_verify ;;
   *)

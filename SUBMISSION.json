@@ -9,8 +9,8 @@
   "cl2_passed": true,
   "demo_run_id": "judge_demo",
   "sealed_packs_committed": 45,
-  "pytest_count": 35,
-  "hackathon_pytest_count": 35,
+  "pytest_count": 42,
+  "hackathon_pytest_count": 42,
   "replay_command": "./scripts/run_kane_verify.sh demo",
   "credits": {
     "ledger_rows_sum": 1119.3071,

@@ -54,3 +54,6 @@ verified_trajectories_full_100.jsonl
 evidence/verified_trajectories_full_100.jsonl
 run_summary.json
 step_*.json
+
+# User/judge diagnostics never change the official evidence inventory
+evidence/local_runs/

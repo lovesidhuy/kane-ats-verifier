@@ -21,11 +21,11 @@ This repository is a clean, standalone verification system:
 - `ats_verifier/` — standalone DOM autofill engine, deterministic QA policy resolver, and discovery deduplicator (no legacy code, no proxies, no CAPTCHA solvers).
 - `tests/kane/harness.py` — local multi-ATS & multi-persona verification server (`127.0.0.1:8766`, dry-run + network no-submit guard).
 - `scripts/kane_loop.py` — closed-loop runner: executes Kane CLI, parses NDJSON + `failure.yaml`, emits a `FixPlan`, writes `tests/kane/.loop_agent_policy.json`, and retries until Kane passes.
-- `tests/` — **35** pytest unit/integration tests and **54** indexed `.testmd` suites.
+- `tests/` — **42** pytest unit/integration tests and **54** indexed `.testmd` suites.
 - `evidence/` — **45** sealed `.evidence` packs, **24** recorded loop runs, and **190** reward-filtered trajectories (**50** public sample).
 - Credits recorded in `evidence/credits_ledger.csv`: **1119.31** ledger sum (**1742.05** balance delta).
 
-## Unified CLI & 0-credit demo (< 1.5 seconds)
+## Unified CLI & 0-credit demo
 
 Run the entire verification suite, replay the closed-loop agent repair, inspect pre-submit boundary receipts, or audit dataset trajectories with a single zero-dependency CLI command:
 
@@ -35,7 +35,7 @@ cd kane-ats-verifier
 python3 -m pip install -r requirements.txt
 
 # Unified Developer CLI:
-./kane-ats demo          # 0-credit instant replay + 35 pytest + claims check (< 1.5s)
+./kane-ats demo          # Offline replay + 42 pytest + claims check; reports elapsed time
 ./kane-ats heal          # Closed-loop red -> heuristic rule fix -> green with visual diff
 ./kane-ats receipts      # Inspect preflight HTML5/ARIA compliance receipts
 ./kane-ats dataset-stats # 190-trajectory dataset validation & distribution
@@ -59,3 +59,13 @@ Artifacts: `evidence/loop_runs/judge_demo/summary.json` (replay **red → fix �
 ## License
 
 AGPL-3.0 — see [LICENSE](LICENSE).
+
+## Official evidence and local reruns
+
+24 recorded loop runs (11 live Kane CLI loop runs, 4 replays, 8 standalone live-suite runs, and 1 blocked CLI attempt).
+
+These are recorded attempts, not 24 passing live loops. The committed `evidence/loop_runs/MANIFEST.json` lists each run, a descriptive label, its type and its summary SHA-256. The locked/authentication-denied attempt is counted separately from live verification. `e6e9accfb444` is a labeled archived fixture replay; `4a5fa1d6f3b1` has no committed summary and is excluded.
+
+`demo`, `heal`, and `loop` write diagnostics and runtime receipts only under ignored `evidence/local_runs/`. They never regenerate the official index or `SUBMISSION.json`; `check_claims.py` is read-only by default. Repeated judge runs do not change official counts.
+
+Archiving is an explicit maintainer operation: `python3 scripts/kane_loop.py --replay --save-evidence --official --run-id new_descriptive_name`. Existing official run directories cannot be overwritten. Review and add the new summary to `MANIFEST.json` with its type, label and SHA-256 before explicitly running `python3 scripts/evidence_index.py` and `python3 scripts/check_claims.py --write-submission`, then commit the reviewed changes. Merely saving a folder does not change the claims count.

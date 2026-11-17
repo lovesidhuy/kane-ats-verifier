@@ -41,10 +41,10 @@ Canonical headline numbers: **`python3 scripts/check_claims.py`** → `SUBMISSIO
 | Claim | Proof |
 |-------|--------|
 | **54** suites indexed | `evidence/evidence_index.json` |
-| **35** pytest tests | `./kane-ats demo` (or `./scripts/run_kane_verify.sh demo`) |
+| **42** pytest tests | `./kane-ats demo` (or `./scripts/run_kane_verify.sh demo`) |
 | **45** sealed packs | `evidence/*.evidence` |
 | **190** trajectories (**50** sample) | `evidence/dataset_manifest.json` |
-| **23** loop runs | `evidence/loop_runs/` |
+| **24** recorded run entries | `evidence/loop_runs/MANIFEST.json` |
 | Credits **1119.31** ledger Σ · **1742.05** balance Δ | `evidence/credits_ledger.csv` |
 | Closed loop red→fix→green | `evidence/loop_runs/cl2_visa_seed_live/` |
 | Kane caught real bugs | `KANE_CAUGHT.md` (K-16 dedupe 415 fixed; CL-2 visa seed) |

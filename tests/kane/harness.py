@@ -33,7 +33,7 @@ from ats_verifier.discovery import (
 )
 from ats_verifier.receipt import DryRunReceipt
 
-RECEIPTS_DIR = REPO_ROOT / "evidence" / "receipts"
+RECEIPTS_DIR = REPO_ROOT / "evidence" / "local_runs" / "receipts"
 RECEIPT_AUDIT_LOG: list[dict] = []
 
 app = Flask(__name__)

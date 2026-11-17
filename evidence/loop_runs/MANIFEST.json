@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "description": "Curated recorded runs; local/judge reruns never change this inventory. A recorded attempt is not necessarily a passing run.",
+  "excluded_runs": {
+    "4a5fa1d6f3b1": "No committed summary at baseline 33272ff; not included in official claims."
+  },
+  "runs": [
+    {
+      "run_id": "ci_replay_smoke",
+      "label": "ci replay smoke",
+      "kind": "replay",
+      "summary_sha256": "2f5184de6fab41a363cd2e5c448ab0f7f311faa3d1a8848373a232087b4feb99"
+    },
+    {
+      "run_id": "cl2_visa_seed_live",
+      "label": "cl2 visa seed live",
+      "kind": "live_cli",
+      "summary_sha256": "dfc691e5ea2e0d60b931aebc801852bb7b549fa1d1eeeee716fe898f6ef64f75"
+    },
+    {
+      "run_id": "cl2_visa_seed_live_b",
+      "label": "cl2 visa seed live b",
+      "kind": "live_cli",
+      "summary_sha256": "613fc4af9bdb264817098f94b273f232d57c45887f5be9b59e09f35984d09cd3"
+    },
+    {
+      "run_id": "cl2_visa_seed_live_v2",
+      "label": "cl2 visa seed live v2",
+      "kind": "live_cli",
+      "summary_sha256": "5627a955fcf5cf23374bcf09c0921d83fbbd588bae4b047a69c4f33532f952a4"
+    },
+    {
+      "run_id": "cl4_email_seed_live",
+      "label": "cl4 email seed live",
+      "kind": "live_cli",
+      "summary_sha256": "0e161386d6022bba824b49cf43882b2b61edae4a964a7cd9dec4fd1aa35c44d2"
+    },
+    {
+      "run_id": "cl4_email_seed_live_v2",
+      "label": "cl4 email seed live v2",
+      "kind": "live_cli",
+      "summary_sha256": "3b9b056ace124f5519e7488822410164564aefdc6d9c48b17d55bdef165fc8e5"
+    },
+    {
+      "run_id": "cl4_salary_seed_live",
+      "label": "cl4 salary seed live",
+      "kind": "live_cli",
+      "summary_sha256": "5ce0e39c44d3420d5c51a43a2a48e5bd24909c1e0160d8e86e9605476219cab4"
+    },
+    {
+      "run_id": "cl4_salary_seed_live_v2",
+      "label": "cl4 salary seed live v2",
+      "kind": "live_cli",
+      "summary_sha256": "75cab1a9b02834addfe2dde3c986833a414ce50c283a639541270fa2d3d47ccd"
+    },
+    {
+      "run_id": "demo_video_recut_replay",
+      "label": "demo video recut replay",
+      "kind": "replay",
+      "summary_sha256": "44cf0842d8e55c4c94ca60693bfab876872e43678770ca2ad889c9e5cf45db09"
+    },
+    {
+      "run_id": "e6e9accfb444",
+      "label": "Archived policy-repair fixture replay (original ID preserved)",
+      "kind": "replay",
+      "summary_sha256": "c821798cb859206a09c561293d84796b0537f29a91a294541b07e20a669ed9f2"
+    },
+    {
+      "run_id": "judge_demo",
+      "label": "judge demo",
+      "kind": "replay",
+      "summary_sha256": "27bd1e3d196f1b9dbe67d56236be3eed1dcc07f3f6fd9be2485e0c81dac5f43e"
+    },
+    {
+      "run_id": "live_cl1_suite17",
+      "label": "live cl1 suite17",
+      "kind": "live_cli",
+      "summary_sha256": "cdd1e12f7d45fd28cbd9464cea6e8cc922c8c934b8906f16f2456e4e30a49233"
+    },
+    {
+      "run_id": "live_cl1_suite17_2",
+      "label": "Blocked CLI attempt: authentication/lock denied; not a live verification pass",
+      "kind": "blocked_attempt",
+      "summary_sha256": "df3fd0833054bb53da58402b35a86f53a2123fdb4491d08c4c70555938d389e9"
+    },
+    {
+      "run_id": "live_cl2_visa_run",
+      "label": "live cl2 visa run",
+      "kind": "live_cli",
+      "summary_sha256": "8d09290a7944fa8e8c5de2851009d39b444f90951a4059a4da15eb2bf755f5cb"
+    },
+    {
+      "run_id": "live_mac_suite17",
+      "label": "live mac suite17",
+      "kind": "live_cli",
+      "summary_sha256": "7fa79113172baad12d3ddaf5ce2ac3ef43613ae960ef1d62f326f5bec419fb2c"
+    },
+    {
+      "run_id": "live_mac_suite17_b",
+      "label": "live mac suite17 b",
+      "kind": "live_cli",
+      "summary_sha256": "c7047374ca082a42c7dfcd8766c822e3a9fd67fc9ff758f91620abd71d2b71ad"
+    },
+    {
+      "run_id": "p0_3_suite36_broken_fail",
+      "label": "p0 3 suite36 broken fail",
+      "kind": "standalone_live_suite",
+      "summary_sha256": "9a58b4c8bd68c44269ce8878b14c95809160a8ad21a0768c160213f72eb43bc6"
+    },
+    {
+      "run_id": "p0_3_suite36_pass",
+      "label": "p0 3 suite36 pass",
+      "kind": "standalone_live_suite",
+      "summary_sha256": "5739e327f3a94276cb0bf9e8effa87a8dbc4b22376a63e34e0442055f727fae9"
+    },
+    {
+      "run_id": "v1_explore_50_live",
+      "label": "v1 explore 50 live",
+      "kind": "standalone_live_suite",
+      "summary_sha256": "150cfc70c8cf96a859288358708c905d1133bcdfbc369c72171dc24eca396236"
+    },
+    {
+      "run_id": "v1_explore_51_live",
+      "label": "v1 explore 51 live",
+      "kind": "standalone_live_suite",
+      "summary_sha256": "cdbcc60b58ae5d502e5309f17fd727dab5b1ca6a81704526f8311260dcfb7962"
+    },
+    {
+      "run_id": "v1_explore_52_live",
+      "label": "v1 explore 52 live",
+      "kind": "standalone_live_suite",
+      "summary_sha256": "fe58e920794919ae1a054115d0d0a9d4e965c5ee82c846eb566dd3b7a4457e74"
+    },
+    {
+      "run_id": "v1_explore_53_live",
+      "label": "v1 explore 53 live",
+      "kind": "standalone_live_suite",
+      "summary_sha256": "75749e302a90cb50b369f8f001a852c1b2c769a0e5c4f708a33b29374ba6365b"
+    },
+    {
+      "run_id": "v1_explore_53_live_b",
+      "label": "v1 explore 53 live b",
+      "kind": "standalone_live_suite",
+      "summary_sha256": "1fa1ddaf9de40b25bda92e84faba9791683998a156b54c43809203364571c95c"
+    },
+    {
+      "run_id": "v1_explore_54_live",
+      "label": "v1 explore 54 live",
+      "kind": "standalone_live_suite",
+      "summary_sha256": "defc384639d00394045ce28d903dc0808772b35411acdf6c4da8c7fb781bd471"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ git clone https://github.com/lovesidhuy/kane-ats-verifier.git
 cd kane-ats-verifier
 python3 -m pip install -r requirements.txt
 
-# 1-command verification replay (< 1.5s):
+# One-command offline verification replay:
 ./kane-ats demo
 
 # Interactive closed-loop repair replay with live heuristic rule diff:
@@ -28,12 +28,12 @@ Or via the shell entrypoint:
 
 Artifacts: `evidence/loop_runs/judge_demo/summary.json` (replay red→fix→green on NDJSON fixtures).
 
-**Cold-clone timing:** `demo` ~1.5s wall (35 pytest + replay + claims), `check_claims` ~0.5s.
+**Timing:** `demo` measures and prints its elapsed time on your machine, including pytest, replay and the claims gate. No fixed runtime is promised.
 
 | Metric | Source |
 |--------|--------|
 | **54** suites indexed | `SUBMISSION.json` |
-| **35** standalone pytest tests | `demo` output |
+| **42** standalone pytest tests | `demo` output |
 | **45** sealed packs | `evidence_index.json` |
 | **24** loop runs recorded | `evidence/loop_runs/` |
 | **190** trajectories (**50** public sample) | `evidence/dataset_manifest.json` |
@@ -78,3 +78,13 @@ Use replay only (`demo`). Pass/fail is in `test_md_done.overall_status` inside `
 | CAPTCHA/proxies? | **Out of scope / not included** — see `SCOPE.md` |
 | Validate evidence zip? | Integrity only; use `overall_status` for pass/fail |
 | Claims table | `SPECIFICATION.md` + `python3 scripts/check_claims.py` |
+
+## Official evidence and local reruns
+
+24 recorded loop runs (11 live Kane CLI loop runs, 4 replays, 8 standalone live-suite runs, and 1 blocked CLI attempt).
+
+These are recorded attempts, not 24 passing live loops. The committed `evidence/loop_runs/MANIFEST.json` lists each run, a descriptive label, its type and its summary SHA-256. The locked/authentication-denied attempt is counted separately from live verification. `e6e9accfb444` is a labeled archived fixture replay; `4a5fa1d6f3b1` has no committed summary and is excluded.
+
+`demo`, `heal`, and `loop` write diagnostics and runtime receipts only under ignored `evidence/local_runs/`. They never regenerate the official index or `SUBMISSION.json`; `check_claims.py` is read-only by default. Repeated judge runs do not change official counts.
+
+Archiving is an explicit maintainer operation: `python3 scripts/kane_loop.py --replay --save-evidence --official --run-id new_descriptive_name`. Existing official run directories cannot be overwritten. Review and add the new summary to `MANIFEST.json` with its type, label and SHA-256 before explicitly running `python3 scripts/evidence_index.py` and `python3 scripts/check_claims.py --write-submission`, then commit the reviewed changes. Merely saving a folder does not change the claims count.
